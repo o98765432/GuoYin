@@ -83,7 +83,9 @@ namespace DtCms.Web.Admin.ShowChanner
         //数据绑定
         private void BindData()
         {
-            DataTable dt = bll.GetList(kindId, kindId, ver);
+            //DataTable dt = bll.GetList(kindId, kindId, ver);
+            //DataTable dt = bll.GetListByParentId(kindId, kindId, ver);
+            DataTable dt = bll.GetList2(kindId, kindId, ver);
 
             if (kindId > 0)
             {

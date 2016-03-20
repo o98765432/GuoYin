@@ -35,7 +35,6 @@ namespace DtCms.Web.Admin
         {
             if (!Page.IsPostBack)
             {
-
                 switch (ver)
                 {
                     case "cn":
@@ -65,7 +64,6 @@ namespace DtCms.Web.Admin
                     default:
                         break;
                 }
-               
             }
 
         }

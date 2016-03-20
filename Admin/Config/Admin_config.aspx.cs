@@ -17,10 +17,11 @@ namespace DtCms.Web.Admin.Config
     {
         private DtCms.BLL.WebSet bll = new DtCms.BLL.WebSet();
         protected string webmapinfo = "0";
-        protected string showver = "";
+        //protected string showver = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             showver = Session["ver"] != null ? (Session["ver"].ToString().Equals("cn") ? "" : (Session["ver"].ToString()) + "/") : "";
 
             if (!Page.IsPostBack)

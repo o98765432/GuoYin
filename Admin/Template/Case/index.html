@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+     <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+        <!--include-->Top.html<!--/include-->
+    </div>
+    <!--List table="banner" typeid="1"  where="ClassId=15" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+    <!--/List-->   
+      <div class="content">
+        <div class="title_cent">
+            <img src="/Images/t_6.jpg" alt=""/>
+        </div>
+    </div>
+       <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="">
+                <p class="content_title content_title1">业务案例</p>
+                <div class="listbox">
+                    <ul class="list_ul gyzp_anul listbox" id="listbox">
+                   <!--List table="channer" typeid="31"  order="sortid asc,id asc"-->
+                    <!--ChildList table="news" typeid="@id@"  num="1"  order="sortid asc,id desc"-->
+                        <li>
+                            <p><a href="/Case/@Child-id@.html"><img src="@ImgUrl@" alt=""/></a></p>
+                            <p class="txtcent business_title"><a href="/Case/@Child-id@.html">@Title@</a></p>
+                        </li>
+                   <!--/ChildList-->
+                   <!--/List--> 
+                    </ul>
+                    <div class="clearfloat"></div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <!--include-->Foot.html<!--/include-->
+    </div>
+      <script type="text/javascript">
+          $("#top4").addClass("select");
+    </script>
+</body>
+</html>

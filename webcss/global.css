@@ -1,0 +1,26 @@
+﻿@charset "utf-8";
+
+/*网站基本定义*/
+div,form,img,ul,ol,li,dl,dt,dd,p,tr,td,body,strong,span,pre,input{margin:0; padding:0; border:0; background-repeat:no-repeat;}
+h1,h2,h3,h4,h5,h6,p{ margin:0; padding:0; font-weight:normal;outline:none;}
+body{font-family:"微软雅黑";font-size:14px;color:#666;height:auto;clear:both;}
+ul,li{ list-style:none;}
+em{ font-style:normal;}
+a{ text-decoration:none; color:#666; outline:none;}
+a:hover{}
+
+/*网站基本定义*/
+.content{  width:1000px; margin:0 auto;}
+.clearfloat{ clear:both; font-size:0px; line-height:0px;}
+input,span,img,em,a{vertical-align:middle;outline:none;}
+
+.margintop10{margin-top:10px;}
+.paddingtop10{padding-top:10px;}
+
+.fl{float:left;}
+.fr{float:right;}
+
+.none{display:none;}
+
+html{*+overflow-x:hidden;}
+

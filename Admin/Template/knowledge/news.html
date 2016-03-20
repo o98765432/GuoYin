@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+        <!--include-->Top.html<!--/include-->
+    </div>
+
+    <!--List table="banner" typeid="1"  where="ClassId=28" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+    <!--/List-->   
+    <div class="content">
+        <div class="title_cent">
+            <img src="/Images/t_7.jpg" alt=""/>
+        </div>  
+    </div>
+   
+   <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="">
+                <p class="content_title content_title1">@ChannerTitle@</p>
+               <p class="news_detail_title">@Title@</p>
+                <p class="new_detail_time ">
+                    <span>来源：@Form@</span>
+                    <span>发布时间：@AddTime@</span>
+                </p>
+                <div class="txtindent divmarginauto">
+                   @ContentInfo@
+                </div>
+                <p class="testcss1 news_history"><a href="/knowledge/index.html"><img src="/Images/t8.jpg" alt=""/></a></p>
+                <div class="news_positon">
+                   <!--ChildList table="news" typeid="@ChannerId@" num="1" order="Id asc"  where="id!=@id@ and id!<@id@" -->
+                   <p>上一篇：<a href="@Child-htmlpath@">@Child-Title@</a></p>
+                   <!--/ChildList-->
+                   <!--ChildList table="news" typeid="@ChannerId@" num="1" order="Id desc"  where="id<@id@" -->
+                   <p>下一篇：<a href="@Child-htmlpath@">@Child-Title@</a></p>
+                   <!--/ChildList--> 
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+     <!--include-->Foot.html<!--/include-->
+    </div>
+</body>
+</html>
+
+

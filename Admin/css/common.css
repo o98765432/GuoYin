@@ -1,0 +1,47 @@
+/*Website basic definitions*/
+div,form,img,ul,ol,li,dl,dt,dd,p,tr,td,input,body,strong,span,pre{margin:0; padding:0; border:0;}
+h1,h2,h3,h4,h5,h6,p{ margin:0; padding:0; font-weight:normal;}
+body{ 	width:100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:0 auto;
+	height:auto; 
+	line-height:21px;
+	background: url(../images/bj_02.jpg) repeat-x left top #cce8f4;
+	}
+img{ border:0px;}
+ul,li{ list-style:none; }
+a{ text-decoration:none; color:#b1b1b1; }
+a:hover{ text-decoration:none; color:#073190; outline:none;}
+a,area{blr:expression(this.onFocus=this.blur())}
+.float_left{ float:left;}
+.float_right{ float:right;}
+.del_float{ clear:both; line-height:0; height:0; font-size:0;}
+/*Website basic definitions*/
+
+
+.bodyBj{ width:100%; height:auto; background:url(../images/bj2_05.gif) no-repeat center top; position:relative; padding-top:710px;}
+#header{ width:784px;  font-size:30px; color:#0a5f92; font-weight:bold; line-height:45px; font-family:"Microsoft Yahei";  position:absolute; left:50%; top:104px; margin-left:-391px; z-index:10; text-align:center;}
+.logincon{ width:784px; height:auto; overflow:hidden; background:url(../images/login.gif) no-repeat center top; position:absolute; left:50%; top:189px; margin-left:-391px; z-index:10;}
+.login{ width:274px; margin:0 auto; padding-top:34px; height:310px;}
+.login ul li{ width:100%; height:30px; line-height:30px; margin-bottom:10px; color:#4c4c4c; font-family:"Microsoft Yahei"; font-size:14px; float:left;}
+.login ul li span.user{ padding-right:14px; float:left; width:43px;}
+.login ul li span.blueColor{ color:#0a5f92;}
+.loginInput{ width:198px; height:27px; background:url(../images/login_03.gif) no-repeat left top; border:1px solid #dcddde; padding-left:5px; line-height:27px; color:#4c4c4c;}
+.loginInput1{ width:100px; height:27px; background:url(../images/login_03.gif) no-repeat left top; border:1px solid #dcddde; padding-left:5px; line-height:27px; float:left; color:#4c4c4c;}
+.login ul li img{ float:right;}
+.margin{ margin:25px 0px 0px 92px; display:inline;}
+.login ul li input.denglu{ width:90px; height:34px; background:url(../images/login_11.gif) no-repeat left top; float:left; text-indent:-999999px; font-size:0px; cursor:pointer; float:left;}
+
+.footermenu{ width:783px; margin:15px auto 26px; height:auto;}
+.footermenu dl{ width:135px; float:left;}
+.footermenu dl dt{ font-size:12px; color:#0a5f92; font-weight:bold; padding-bottom:10px;}
+.footermenu dl dd{ width:100%;}
+.footermenu dl dd ul li{ width:100%; line-height:28px; color:#85abc2;}
+.footermenu dl dd ul li a,.footermenu dl dd ul li a:hover{ color:#85abc2;}
+.footermenu dl.width60{ width:60px;}
+.margin20{ margin-right:20px;}
+
+.copy{ width:100%; background:url(../images/line_15.gif) no-repeat center top; padding-top:16px; text-align:center; color:#85abc2; margin-bottom:26px;}
+
+.cloud{ width:100%; height:400px; position:absolute; left:0px; top:0px; z-index:0;}

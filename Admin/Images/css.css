@@ -1,0 +1,95 @@
+
+/* CSS Document */
+
+body{ margin:0px; padding:0px; background:#10263d; font-size:12px; color:#FFF;}
+
+img{ border:0px;}
+
+a{ text-decoration:none; color:#e5eef2;}
+
+.center{ margin:0px auto;}
+
+#wrapper{ width:1003px; background:url(../images/Bg.gif) no-repeat; height:570px;}
+
+#logo{ margin-top:51px; margin-left:49px; margin-bottom:21px;}
+
+.logoMg{ margin-right:11px;}
+
+.logoMg2{ margin-right:8px;}
+
+#loginBox{ margin-left:49px;}
+
+#loginBox2{ margin-left:49px;}
+
+#loginBox3{ margin-left:49px;}
+
+.loginSrk{ border:1px solid #FFF; width:148px;}
+
+.loginSrk2{ border:1px solid #FFF; width:100px;}
+
+.Tbyzm{ margin-left:103px; margin-top:7px;}
+
+.Rbox{ margin-top:332px; margin-right:28px;}
+
+.biao{ text-align:right; margin-right:28px; margin-top:100px; padding-right:5px;}
+
+.Txt{ margin-top:20px; margin-bottom:20px;}
+
+.TxtBox{ color:#e5eef2;}
+
+.efont{ font-family:Arial; font-size:14px; line-height:20px;}
+
+.efont a{ color:#e5eef2;}
+
+.srkMg{ margin-bottom:6px;}
+
+
+
+
+/*---------------------------------*/
+
+
+
+
+/*提示文字样式*/
+#HintMsg{
+	width:271px;
+	position:absolute;
+	display:none;
+	color:Black;
+	z-index:20;
+}
+#HintMsg .HintTop{
+	height:9px;
+	background:url(hintbg1.gif) no-repeat;
+	overflow:hidden;
+}
+#HintMsg .HintInfo{
+	padding:0 5px;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	background:#FFFFE1;
+	line-height:1.5em;
+}
+#HintMsg .HintInfo b{
+	display:block;
+	margin-bottom:6px;
+	padding-left:15px;
+	background:url(hint.gif) left center no-repeat;
+	height:13px;
+	line-height:16px;
+}
+#HintMsg .HintInfo b span{
+	display:block;
+	float:right;
+	text-indent:-9999px;
+	background:url(close.gif) no-repeat;
+	width:12px;
+	height:12px;
+	cursor:pointer;
+}
+#HintMsg .HintFooter{
+	height:22px;
+	background:url(hintbg2.gif) no-repeat;
+}
+/*设置提示样式*/

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta name="author" content="深圳沙漠风网络科技 www.szweb.cn" />
+    <meta name="Keywords" content="@SeoKeyWords@" />
+    <meta name="Description" content="@SeoDes@" />
+    <title>@SeoTitle@</title>
+    <!--include-->Css.html<!--/include-->
+</head>
+<body>
+<!--include-->Top.html<!--/include-->
+<div class="containter">
+	<div class="global clearfix">
+        <div class="title">
+            <h1>@ShowAllTitle@</h1>
+            <div class="title_menu">
+                <a href="/" title="首页">首页</a>
+                <a href="javascript:;" title="@ShowAllTitle@">@ShowAllTitle@</a>
+                <span>@ChannerTitle@</span>
+            </div>
+        </div>
+        <div class="leftbox left">
+        	 @ShowAllLeftInfo@
+             <!--include-->Left.html<!--/include-->
+        </div>
+        <div class="rightbox right pb20">
+        	 @ShowAllRightInfo@ 
+        </div>
+    </div>
+</div>
+<!--include-->End.html<!--/include-->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#show_@ShowCaseNowId@").addClass("cur");
+
+    });
+</script>
+</body>
+</html>

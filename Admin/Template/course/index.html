@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <!--include-->Css.html<!--/include-->
+</head>
+<body>
+  <div id="top">
+  <!--include-->Top.html<!--/include-->
+  </div>
+    <!--List table="banner" typeid="1"  where="ClassId=13" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+     <!--/List-->   
+    <div class="content">
+        <!--include-->about/Left.html<!--/include-->
+    </div>
+     <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="divmarginauto divwidth968 ">
+                <p class="content_title content_title1">发展历程</p>
+                <div>
+                <p class="">国银金融租赁股份有限公司（以下简称“国银租赁”）是经中国银行业监督管理委员会批准，由国家开发银行对原深圳金融租赁有限公司进行股权重组并大规模增资后变更设立的非银行金融机构，注册资本80亿元，是中国资本实力最强的金融租赁公司之一。</p><br />
+<p class="">从公司前身深圳租赁有限公司（以下简称“深圳租赁”）创立至今，国银租赁已走过30年的发展历程，主要经历了初创、探索、调整和快速发展四个重要阶段。</p><br /><br />
+</div><div></div>
+
+                <!--MyPage-->
+                <div class="gypz_tabbox">
+                    <div class="gypz_tab_titme">
+                        <span class="gypz_tab_titmespan">
+                            <i>@Title@</i>
+                            <span><em>@Author@</em></span>
+                        </span>
+                    </div>
+                    <div class="gypz_tab_cont1">
+                        @ContentInfo@
+                    </div>
+                </div>
+                <!--/MyPage-->   
+
+                <div class="gypz_tab1">
+                    <ul class="gypz_tabul1" id="gypz_tabul1">
+                       <!--List table="news" typeid="8"   order="sortid asc,id desc"-->
+                        <li><a href="javascript:">@Title@</a></li>
+                        <!--/List-->   
+                    </ul>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+            <div class="clearfloat"></div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <!--include-->Foot.html<!--/include-->
+   <script type="text/javascript">
+       $(".gypz_tabbox").eq(0).addClass("gypz_tabbox block");
+        $("#top2").addClass("select");
+   </script>
+    </div>
+</body>
+</html>

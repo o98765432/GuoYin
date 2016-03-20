@@ -1,0 +1,135 @@
+/* CSS Document */
+html{
+	border-right:1px solid #ccc;
+	height:100%;
+}
+html, body{
+	font-size:12px;
+	font-family:"ËÎÌו", Arial, "Times New Roman";
+	color:#004578;
+	margin:0px;
+	padding:0px;
+	
+	SCROLLBAR-FACE-COLOR: #DDDDDD;
+	SCROLLBAR-HIGHLIGHT-COLOR: #EEEEEE; 
+	SCROLLBAR-SHADOW-COLOR: #003478; 
+	SCROLLBAR-3DLIGHT-COLOR: #003478; 
+	SCROLLBAR-ARROW-COLOR: #003478; 
+	SCROLLBAR-TRACK-COLOR: #EFEFEF; 
+	SCROLLBAR-DARKSHADOW-COLOR: #EFEFEF;
+	
+	overflow-x:hidden;
+}
+ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+a{
+	color:#444444;
+	text-decoration:none;
+	font-size:12px;
+	font-family:"ËÎÌו", Arial, "Times New Roman";
+}
+a:hover{
+	color:#FF6600;
+	text-decoration:none;
+	padding-left:2px;
+	padding-top:2px;
+	font-size:12px;
+	font-family:"ËÎÌו", Arial, "Times New Roman";
+}
+
+
+.container{
+	width:100%;
+	height:100%;
+}
+.header{
+	width:100%;
+	background:#F8F8F8;
+	border-bottom:1px solid #dedede;
+}
+.title{
+	height:40px;
+	line-height:40px;
+	font-weight:bold;
+	text-align:left;
+	font-size:13px;
+}
+.version{
+	text-align:right;
+	margin-right:10px;
+	color:#aaa;
+	height:20px;
+	line-height:20px;
+	color:red;
+	cursor:pointer;
+}
+#content{
+	margin-top:15px;
+}
+.menu{
+	margin-top:5px;
+	width:178px;
+	margin-left:2px;
+}
+.menuTitle{
+	width:100%;
+	font-weight:bold;
+	border:1px solid #aaaabb;
+	background:#EEEEEE;
+	height:25px;
+	line-height:25px;
+	cursor:pointer;
+}
+.menuTitle li{
+	height:23px;
+	line-height:23px;
+}
+.menuTitle .title{
+	padding-left:6px;
+	padding-top:2px;
+	width:80%;
+	float:left;
+}
+.menuTitle .currentTitle{
+	padding-left:8px;
+	padding-top:2px;
+	width:80%;
+	float:left;
+	color:#FF6600;
+}
+.menuTitle .right{
+	float:left;
+	width:10%;
+}
+
+.subMenu{
+	padding-top:4px;
+	clear:left;
+	border:1px solid #aaaabb;
+	border-top:0px;
+	width:100%;
+	display:none;
+}
+.subMenu ol{
+	margin-top:0px;
+	margin-bottom:7px;
+	margin-left:-5px !important;
+	margin-left:15px;
+	list-style-image:url(../images/menu_list_icon.gif);
+}
+.subMenu li{
+	line-height:26px;
+	height:26px;
+	width:90%;
+	background:url(../images/menu_list_split.gif) no-repeat left bottom;
+}
+.subMenu ul li{
+	line-height:26px;
+	height:26px;
+	width:90%;
+	margin-left:5px;
+	background:url(../images/menu_list_split.gif) no-repeat left bottom;
+}

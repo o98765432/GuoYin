@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <!--include-->Css.html<!--/include-->
+</head>
+<body>
+  <div id="top">
+  <!--include-->Top.html<!--/include-->
+  </div>
+    <!--List table="banner" typeid="1"  where="ClassId=13" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+     <!--/List-->   
+    <div class="content">
+        <!--include-->about/Left.html<!--/include-->
+    </div>
+      <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="divmarginauto divwidth968 ">
+                <p class="content_title content_title1">主要荣誉</p>
+                <ul class="main_honors" id="main_honors">
+                    <!--MyPage-->
+                    <li>
+                        <p class="main_honors_img"><img src="@ImgUrl@" alt="" /></p>
+                        <p class="main_honors_txtbox"><a href="javascript:" class="main_honors_txt">@Title@</a></p>
+                    </li>
+                    <!--/MyPage-->   
+                </ul>
+                <div class="clearfloat"></div>
+               <div class="fenye">@pagecontentinfo@</div>
+            </div>
+
+
+        </div>
+        
+    </div>
+    <div class="mask"></div>
+    <div class="pop">
+        <span class="pop_fl_top"></span>
+        <span class="pop_fl_bottom"></span>
+        <span class="pop_fr_top"></span>
+        <span class="pop_fr_bottom"></span>
+        <div class="pop_fl_top_top"></div>
+        <div class="pop_fl_top_left"></div>
+        <div class="pop_fl_top_right"></div>
+        <div class="pop_fl_top_bottom"></div>
+        <!--<i class="pop_colse"></i>-->
+        <div class="pop_padding">
+            <div class="pop_box">
+                <div class="main_honor_padding">
+                    <div class="pop_colsebox"><i class="pop_colse"></i></div>
+                    <div class="pop_imgbox_re">
+                        <img src="" alt="" />
+                        <a href="javascript:" class="pop_prev"></a>
+                        <a href="javascript:" class="pop_next"></a>
+                    </div>
+                    <div class="pop_positonbox">
+                        <div class="imgdetail_text"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <!--include-->Foot.html<!--/include-->
+    </div>
+    <script type="text/javascript">
+        $("#top2").addClass("select");
+    </script>
+</body>
+</html>

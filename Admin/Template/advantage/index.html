@@ -2,22 +2,251 @@
 <html>
 <head>
    <!--include-->Css.html<!--/include-->
+    <link rel="stylesheet" type="text/css" href="jquery.mCustomScrollbar.css">
+    <script src="/webjs/jquery.mCustomScrollbar.min.js"></script>
+    <script src="/webjs/jquery.mousewheel.min.js"></script>
+    <script src="/webjs/jquery-ui-1.10.4.min.js"></script>
+
 </head>
 <body>
   <div id="top">
   <!--include-->Top.html<!--/include-->
   </div>
-    <!--List table="banner" typeid="1"  where="ClassId=13" order="sortid desc,id desc"-->
+    <!--List table="banner" typeid="1"  where="ClassId=13" order="sortid ,id desc"-->
     <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
-     <!--/List-->   
+     <!--/List-->  
     <div class="content">
         <!--include-->about/Left.html<!--/include-->
     </div>
-    @ContentInfo@
+    <div class="">
+        <p class="content_title content_title1">@ChannerTitle@</p>
+        <div class="newbox">            
+           
+            
+            
+            <center>
+<div style="clear:both;height:30px"> </div>
+<div class="fz-c">
+    <p>
+        我们是中国租赁行业的开创者和领导者，是国家开发银行唯一的租赁业务平台，致力于为航空、基础设施等行业的优质客户提供全面的租赁服务。
+    </p>
+    <br/>
+    <br/>
+    <br/>
+
+    <script type="text/javascript">
+    $(function () {
+        $(".vtab1title dd").mouseover(function () {
+            $(".vtab1title dd").removeClass("sel");
+            $(this).addClass("sel");
+            var i = $(".vtab1 dd").index(this) + 1;
+            $(".vtab1content dd").removeClass("on");
+            $(".vtab1content dd:nth-child(" + i + ")").addClass("on");
+        });
+    });
+</script>
+
+		<div class="vtab1">
+			<div class="vtab1title">
+			<dl>
+            <!--List table="news" typeid="11" where="Id=394"  order="sortid asc,id desc"-->
+				<dd class="sel">
+                    <div class="tb-num">01</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+                <!--List table="news" typeid="11" where="Id=395"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">02</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+                <!--List table="news" typeid="11" where="Id=396"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">03</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+
+                <!--List table="news" typeid="11" where="Id=397"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">04</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+                <!--List table="news" typeid="11" where="Id=398"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">05</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+
+                <!--List table="news" typeid="11" where="Id=399"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">06</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+
+                <!--List table="news" typeid="11" where="Id=400"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">07</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+
+                <!--List table="news" typeid="11" where="Id=401"  order="sortid asc,id desc"-->
+				<dd>
+                    <div class="tb-num">08</div>
+			        <div class="tb-num-r">
+                        <table width="95%" border="0" cellpadding="0" cellspacing="0"><tr><td height="92">
+                            @Title@
+                        </td></tr></table>
+                    </div>
+                </dd>
+				<!--/List-->
+
+			</dl>
+			</div>
+			<div class="vtab1content">
+			<dl>
+            <!--List table="news" typeid="11" where="Id=394"  order="sortid asc,id desc"-->
+				<dd class="on">
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=395"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=396"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=397"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=398"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=399"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=400"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+            <!--List table="news" typeid="11" where="Id=401"  order="sortid asc,id desc"-->
+				<dd>
+                    @ContentInfo@
+                </dd>
+            <!--/List-->
+			</dl>
+			</div>
+		</div>
+
+
+</div>
+
+
+</center>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+
+            
+        </div>
+
+    </div>
+
+    <div class="clearfloat"></div>
+    <div style="height:150px;width:100%;font-size:0;"></div>
+    <!--<div class="content">
+        <!--include-->about/Left.html<!--/include-->
+    
+    @ContentInfo@-->
     <div class="footer" id="footer">
     <!--include-->Foot.html<!--/include-->
     </div>
     <script type="text/javascript">
+
+		//(function($){
+		//	$(window).load(function(){
+
+		//		$("#content-1").mCustomScrollbar({
+		//			theme:"minimal"
+		//		});
+
+		//	});
+		//})(jQuery);
+
+
+        $(".gypz_tabbox").eq(0).addClass("gypz_tabbox block");
         $("#top2").addClass("select");
     </script>
 </body>

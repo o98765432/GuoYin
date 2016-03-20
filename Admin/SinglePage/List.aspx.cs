@@ -59,7 +59,8 @@ namespace DtCms.Web.Admin.SinglePage
                 }
 
             }
-
+            lbtManage.Visible = classId == 1131;
+            lbtManage.PostBackUrl = string.Format("../ShowChanner/List.aspx?kindId={0}&path=SinglePage", classId);
             channelmodel = channel.GetModel(this.classId);
 
            

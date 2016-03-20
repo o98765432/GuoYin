@@ -25,7 +25,42 @@
 
                 <p class="business_baner"><img src="@ImgUrl4@" alt="" width="978" height="214" /></p>
                 <div class="business_tab" id="business_tab_button">
-                    @tab@
+                   
+                   <div id="tab_cx">
+
+                   </div>
+                   <script type="text/javascript">
+                      var divx = $("#tab_cx");
+                      var str = "";
+                      var url = window.location.href;
+                      if( url.indexOf("4")!=-1) {
+                            str = "<span class=\"select\"><a href=\"javascript:\">业务介绍</a></span><span><a href=\"javascript:\">业务优势</a></span><span><a href=\"javascript:\">客户合作</a></span>";
+                            divx.html(str);
+                       }
+
+                       if( url.indexOf("10")!=-1) {
+                            str = "<span class=\"select\"><a href=\"javascript:\">业务介绍</a></span><span><a href=\"javascript:\">业务优势</a></span>";
+                            divx.html(str);
+                       }
+
+                       if( url.indexOf("6")!=-1) {
+                            str = "<span class=\"select\"><a href=\"javascript:\">业务介绍</a></span><span><a href=\"javascript:\">制造设备租赁</a></span><span><a href=\"javascript:\">商业地产租赁</a></span>";
+                            divx.html(str);
+                       }
+
+                       if( url.indexOf("5")!=-1) {
+                            str = "<span class=\"select\"><a href=\"javascript:\">船舶租赁</a></span><span><a href=\"javascript:\">商用车和工程机械租赁</a></span>";
+                            divx.html(str);
+                       }
+                   </script>
+                   
+                    <!--List table="product" typeid="4" where="id=4" order="id asc"-->
+                    
+
+                    <!--/List-->
+                   
+                    
+
                 </div>
 
             </div>
@@ -34,14 +69,14 @@
         <div class="cont_box_bg1">
             <div class="content">
                 <div class="business_tab_box block">
-                    <br />
-                    <!--<p><span class="business_tit1">业务介绍</span></p>-->
+                    <div style="line-height:1.9">
                     <p class="txtlineheight">
                         @ContentInfo4@
                     </p>
+                    </div>
                 </div>
                 <div class="business_tab_box">
-                    <div>
+                    <div style="line-height:1.9">
                         <p class="txtlineheight">
                             @ContentInfo@
                         </p>
@@ -55,7 +90,7 @@
                      
                 </div>
                 <div class="business_tab_box">
-                    <div>
+                    <div style="line-height:1.9">
                         <p class="txtlineheight">
                             <br />
                             <br />

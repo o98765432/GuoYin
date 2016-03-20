@@ -21,6 +21,20 @@ namespace DtCms.Web.Admin.ShowChanner
         protected string rightimg = string.Empty;
         protected string rightcontentimg = string.Empty;
         protected int showkindid = 0;
+
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -78,7 +92,7 @@ namespace DtCms.Web.Admin.ShowChanner
 
                 Model.Channel channelmodel = new BLL.Channel().GetModel(shownowid);
 
-                model = bll.GetModel(classId, "cn");
+                model = bll.GetModel(classId, ver);
 
 
                 if (kindId == 0 && classId == 0 && shownowid == 0)
@@ -92,7 +106,7 @@ namespace DtCms.Web.Admin.ShowChanner
                     if (channelmodel != null)
                     {
 
-                        ChannelTreeBind(kindId, kindchannel.Title, kindchannel.Id, this.ddlClassId, "cn");
+                        ChannelTreeBind(kindId, kindchannel.Title, kindchannel.Id, this.ddlClassId, ver);
                     }
                     else if (model != null)
                     {
@@ -111,7 +125,7 @@ namespace DtCms.Web.Admin.ShowChanner
                             else
                             {
 
-                                ChannelTreeBind(kindId, kindchannel.Title, kindchannel.Id, this.ddlClassId, "cn");
+                                ChannelTreeBind(kindId, kindchannel.Title, kindchannel.Id, this.ddlClassId, ver);
 
                             }
 

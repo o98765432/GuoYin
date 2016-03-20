@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <!--include-->Css.html<!--/include-->
+</head>
+<body>
+  <div id="top">
+  <!--include-->Top.html<!--/include-->
+  </div>
+    <!--List table="banner" typeid="87"  where="islock=1" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+     <!--/List-->   
+    <div class="content">
+        <!--include-->about/Left.html<!--/include-->
+    </div>
+     <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="divmarginauto divwidth968 ">
+                <p class="content_title content_title1">History</p>
+                <div>
+                <p class="gypz_inline">China Development Bank Leasing Co., Ltd (hereinafter referred to as “CDB Leasing”) is a non-bank financial institution approved by China Banking Regulatory Commission, and established after China Development Bank restructured shares and dramatically increased the holding of its predecessor, Shenzhen Financial Leasing Co., Ltd. With registered capital of 8 billion yuan, it is one of the financial leasing companies with the strongest strength in China.</p>
+<p class="gypz_inline">Since the founding of its predecessor Shenzhen Financial Leasing Co., Ltd. (hereinafter referred to as “Shenzhen Leasing”), CDB Leasing has a history of over 30 years.Its history can be divided into mainly four important stages: initial founding, exploration, adjustment and rapid development.</p><br /><br />
+</div><div></div>
+
+                <!--MyPage-->
+                <div class="gypz_tabbox">
+                    <div class="gypz_tab_titme">
+                        <span class="gypz_tab_titmespan">
+                            <i>@Title@</i>
+                            <span><em>@Author@</em></span>
+                        </span>
+                    </div>
+                    <div class="gypz_tab_cont1">
+                        @ContentInfo@
+                    </div>
+                </div>
+                <!--/MyPage-->   
+
+                <div class="gypz_tab1">
+                    <ul class="gypz_tabul1" id="gypz_tabul1">
+                       <!--List table="news" typeid="55"   order="sortid asc,id desc"-->
+                        <li><a href="javascript:">@Title@</a></li>
+                        <!--/List-->   
+                    </ul>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+            <div class="clearfloat"></div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <!--include-->Foot.html<!--/include-->
+   <script type="text/javascript">
+       $(".gypz_tabbox").eq(0).addClass("gypz_tabbox block");
+        $("#top2").addClass("select");
+   </script>
+    </div>
+</body>
+</html>

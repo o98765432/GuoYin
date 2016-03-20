@@ -13,6 +13,18 @@ namespace DtCms.Web.Admin.ShowChanner
         DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
         protected string path = "Article";
         protected int showkindid = 0;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,6 +46,9 @@ namespace DtCms.Web.Admin.ShowChanner
             {
                 if (!Page.IsPostBack)
                 {
+                    lbtAddTopChanner.Visible = kindId == 0;
+                    lbtAddTopChanner.PostBackUrl = string.Format("edit.aspx?kindId={0}&showkindid={1}", kindId, showkindid);
+                    lbtBack.PostBackUrl = string.Format("../{0}/list.aspx?classid={1}", path, kindId);
                     BindData();
                 }
             }
@@ -54,7 +69,7 @@ namespace DtCms.Web.Admin.ShowChanner
                 if (showid > 0)
                 {
 
-                    new BLL.Channel().Delete(showid, "cn");
+                    new BLL.Channel().Delete(showid, ver);
 
                 }
                 Response.Write("<script type='text/javascript'>alert('删除成功');location.href='List.aspx?kindId=" + kindId + "&showkindid=" + showkindid + "'</script>");
@@ -68,7 +83,7 @@ namespace DtCms.Web.Admin.ShowChanner
         //数据绑定
         private void BindData()
         {
-            DataTable dt = bll.GetList(kindId, kindId, "cn");
+            DataTable dt = bll.GetList(kindId, kindId, ver);
 
             if (kindId > 0)
             {
@@ -94,9 +109,9 @@ namespace DtCms.Web.Admin.ShowChanner
             {
                 case "btndel":
                     //保存日志
-                    SaveLogs("[栏目类别]删除类别：" + bll.GetModel(Convert.ToInt32(txtClassId.Value), "cn"));
+                    SaveLogs("[栏目类别]删除类别：" + bll.GetModel(Convert.ToInt32(txtClassId.Value), ver));
                     //删除记录
-                    bll.Delete(Convert.ToInt32(txtClassId.Value), "cn");
+                    bll.Delete(Convert.ToInt32(txtClassId.Value), ver);
                     BindData();
                     Response.Write("<script type='text/javascript'>alert('删除成功');location.href='List.aspx?kindId=" + kindId + "&path=" + path + "'</script>");
                     Response.End();

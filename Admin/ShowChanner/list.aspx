@@ -22,9 +22,14 @@
 </head>
 <body style="padding:10px;">
     <form id="form1" runat="server">
-        <div class="navigation"><span class="add"><%if (kindId == 0)
-                                                    { %><a href="edit.aspx?kindId=<%=kindId %>&showkindid=<%=showkindid %>">增加顶级类别</a>&nbsp;&nbsp;<%} %><a href="../<%=path %>/list.aspx?classid=<%=kindId %>">返回列表</a></span><b>您当前的位置：首页 &gt; 类别管理 &gt; 类别列表</b></div>
-        <div class="spClear"></div>
+        <div class="navigation">
+            <span>
+                <asp:LinkButton ID="lbtAddTopChanner" CssClass="add" runat="server">增加顶级类别</asp:LinkButton>
+       &nbsp;&nbsp;
+            <asp:LinkButton ID="lbtBack" runat="server">返回列表</asp:LinkButton>
+            </span>    
+            <b>您当前的位置：首页 &gt; 类别管理 &gt; 类别列表</b></div>
+            <div class="spClear"></div>
          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="msgtable">
                     <tr>
                         <th width="7%">编号</th>

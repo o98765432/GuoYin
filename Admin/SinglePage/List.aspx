@@ -113,7 +113,7 @@
                       <asp:LinkButton ID="updateInfo" runat="server" onclick="updateInfo_Click">修改</asp:LinkButton>
                 </span>
                   &nbsp;
-                 <span class="btn_all" <%if (classId !=1131) {%>style="display:none"<%} %> onclick="location.href='../ShowChanner/List.aspx?kindId=<%=classId %>&path=SinglePage'">管理菜单</span>
+                <asp:LinkButton ID="lbtManage" CssClass="btn_all" runat="server">管理菜单</asp:LinkButton>
             </div>
 	</div>
     </form>

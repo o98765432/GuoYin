@@ -10,7 +10,8 @@ a{ text-decoration:none; color:#666; outline:none;}
 a:hover{}
 
 /*网站基本定义*/
-.content{  width:1000px; margin:0 auto;}
+/*content的width从1000改为1060*/
+.content{  width:1060px; margin:0 auto;}
 .clearfloat{ clear:both; font-size:0px; line-height:0px;}
 input,span,img,em,a{vertical-align:middle;outline:none;}
 

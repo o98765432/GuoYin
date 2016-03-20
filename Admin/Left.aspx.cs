@@ -19,17 +19,30 @@ namespace DtCms.Web.Admin
 
 
         protected string banben = "";
-        string ver = "cn";
-
+        protected string ver
+        {
+            get
+            {
+                if(_ver==string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver=string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
 
-                switch (Session["ver"].ToString())
+                switch (ver)
                 {
                     case "cn":
                         banben = "中文版";
+                        break;
+                    case "cn-tw":
+                        banben = "繁体中文版";
                         break;
                     case "en":
                         banben = "英文版";
@@ -117,7 +130,7 @@ namespace DtCms.Web.Admin
 
             StringBuilder bur = new StringBuilder();
             channel.ParentId = 0;
-            channel.Ver = "cn";
+            channel.Ver =ver;
 
             DataSet ds = bll.GetChannelRptBind(" kindid=" + nowkindid + " and parentid=0");
             if (ds.Tables.Count > 0)
@@ -140,7 +153,7 @@ namespace DtCms.Web.Admin
 
                             channel = new Model.Channel();
 
-                            channel.Ver = "cn";
+                            channel.Ver = ver;
 
                             channel.ParentId = Convert.ToInt32(ds.Tables[0].Rows[i]["id"]);
 

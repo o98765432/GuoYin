@@ -18,13 +18,15 @@
 
             <div class="divmarginauto divwidth968 ">
                 <p class="content_title content_title1">主要荣誉</p>
-                <ul class="main_honors" id="main_honors">
-                    <!--MyPage-->
+                <ul class="main_honors" id="gypz_tabul1">
+                    <!--List table="banner" typeid="12"  order="sortid asc,id desc"-->
+
                     <li>
                         <p class="main_honors_img"><img src="@ImgUrl@" alt="" /></p>
-                        <p class="main_honors_txtbox"><a href="javascript:" class="main_honors_txt">@Title@</a></p>
-                    </li>
-                    <!--/MyPage-->   
+                        <p id="honorstitle"><a href="javascript:" class="main_honors_txt">@Title@</a></p>
+                        <div class="main_honors_describe">@content2@</div>
+                    </li>                   
+                     <!--/List-->   
                 </ul>
                 <div class="clearfloat"></div>
                <div class="fenye">@pagecontentinfo@</div>
@@ -56,6 +58,7 @@
                     </div>
                     <div class="pop_positonbox">
                         <div class="imgdetail_text"></div>
+                        <div class="imgdetail_describe"></div>
                     </div>
                 </div>
                 
@@ -66,6 +69,7 @@
     <!--include-->Foot.html<!--/include-->
     </div>
     <script type="text/javascript">
+       
         $("#top2").addClass("select");
     </script>
 </body>

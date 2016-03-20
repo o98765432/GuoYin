@@ -116,12 +116,13 @@ function BusinessTabButton() {
 
     $("#partner_links_ul li").gyzy({ more: "#gyzp_hzhb_more",number:12 });
 }
+//将main_honors替换成了gypz_tabul1     符佳华
 function PopEvent() {
     var MaskDiv = $(".mask");
     var Popbox = $(".pop");
     var poppositonbox = $(".pop_positonbox");
-    var liitem = $("#main_honors li");
-    var liitemImg = $("#main_honors li .main_honors_img img");
+    var liitem = $("#gypz_tabul1 li");
+    var liitemImg = $("#gypz_tabul1 li .main_honors_img img");
     var  popind=0;
     var masksizes = function () {
         var winheight = $(window).height();
@@ -144,6 +145,8 @@ function PopEvent() {
         popind = $(this).parents("li").index();
         Popbox.find("img").attr("src", $(this).parents("li").find("img").attr("src"));
         Popbox.find(".imgdetail_text").html($(this).parents("li").find(".main_honors_txt").html());
+        Popbox.find(".imgdetail_describe").html($(this).parents("li").find(".main_honors_describe").html());
+
         masksizes();
     });
     $(".pop_colse").click(function () {
@@ -159,7 +162,8 @@ function PopEvent() {
         } else {
             $(this).parents(".pop_box").find("img").attr("src", liitem.eq(popind).prev().find("img").attr("src"));
             $(this).parents(".pop_box").find(".imgdetail_text").html(liitem.eq(popind).prev().find(".main_honors_txt").html());
-            masksizes();popind--;
+            $(this).parents(".pop_box").find(".imgdetail_describe").html(liitem.eq(popind).prev().find(".main_honors_describe").html());
+            masksizes(); popind--;
         } 
     });
     $(".pop_next").click(function () {
@@ -168,7 +172,8 @@ function PopEvent() {
         } else {
             $(this).parents(".pop_box").find("img").attr("src", liitem.eq(popind).next().find("img").attr("src"));
             $(this).parents(".pop_box").find(".imgdetail_text").html(liitem.eq(popind).next().find(".main_honors_txt").html());
-            masksizes();popind++;
+            $(this).parents(".pop_box").find(".imgdetail_describe").html(liitem.eq(popind).next().find(".main_honors_describe").html());
+            masksizes(); popind++;
         }
     });
     $(window).resize(function () {

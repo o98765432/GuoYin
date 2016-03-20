@@ -23,7 +23,18 @@ namespace DtCms.Web.Admin.Product
 
         protected int classId;
         protected int GdClaId;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected BLL.Product product = new BLL.Product();
@@ -60,8 +71,7 @@ namespace DtCms.Web.Admin.Product
 
             channelmodel = channel.GetModel(this.classId);
 
-
-            this.ver = Session["ver"].ToString();
+            
  
             if (!string.IsNullOrEmpty(Request.Params["keywords"]))
             {
@@ -81,9 +91,9 @@ namespace DtCms.Web.Admin.Product
             {
                 this.ddlProperty.Visible = false;
 
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Product, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Product, this.ddlClassId, ver);
 
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "sortid asc");
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "sortid asc");
 
                 this.ddlClassId.SelectedValue = newsclassid + "";
             }
@@ -93,7 +103,7 @@ namespace DtCms.Web.Admin.Product
         {
             try 
             {
-                ds = product.getImage(pagesize, page, "Id>0 and ver='" + Session["ver"].ToString() + "' ", "AddTime");
+                ds = product.getImage(pagesize, page, "Id>0 and ver='" + ver + "' ", "AddTime");
 
             }catch(Exception ex)
             {
@@ -190,7 +200,7 @@ namespace DtCms.Web.Admin.Product
                         bll.UpdateField(id, "IsSlide=1");
                     break;
             }
-            this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc");
+            this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc");
         }
 
         //类别筛选

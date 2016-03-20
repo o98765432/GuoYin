@@ -21,7 +21,18 @@ namespace DtCms.Web.Admin.Contents
 
 
         protected int GdClaId;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected int newsclassid = 0;
@@ -60,7 +71,6 @@ namespace DtCms.Web.Admin.Contents
             }
 
             channelmodel = channel.GetModel(this.classId);
-            this.ver = Session["ver"].ToString();
 
             DataSet ds = channel.GetClassList(this.classId, ver);
 
@@ -88,9 +98,9 @@ namespace DtCms.Web.Admin.Contents
             if (!Page.IsPostBack)
             {
                 this.lbtnDel.Visible = deleteflag;
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver);
  
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property));
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property));
 
                
                 this.ddlClassId.SelectedValue = newsclassid + "";
@@ -174,7 +184,7 @@ namespace DtCms.Web.Admin.Contents
             DtCms.Common.HtmlWriter htmlWriter = new HtmlWriter();
 
             DtCms.BLL.Contents bll = new DtCms.BLL.Contents();
-            DataSet ds=bll.GetList(" ver='"+Session["ver"].ToString()+"'");
+            DataSet ds=bll.GetList(" ver='"+ver+"'");
 
             int successCount = 0, failCount = 0;
 

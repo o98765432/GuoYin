@@ -10,6 +10,19 @@ namespace DtCms.Web.Admin.Contents
     public partial class Add : DtCms.Web.UI.ManagePage
     {
         protected int classid;
+
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["classid"].ToString() != "" && Request.QueryString["classid"] != null)
@@ -23,8 +36,7 @@ namespace DtCms.Web.Admin.Contents
 
                 chkLoginLevel("addContents");
                 //绑定类别
-                //ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Contents, this.ddlClassId,"cn");
-                ChannelTreeBind(this.classid, "请选择所属类别...", (int)Channel.Contents, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classid, "请选择所属类别...", (int)Channel.Contents, this.ddlClassId, ver);
                 if (!string.IsNullOrEmpty(Request.Params["classId"]))
                 {
                     ddlClassId.SelectedValue = Request.Params["classId"].Trim();
@@ -41,7 +53,7 @@ namespace DtCms.Web.Admin.Contents
             model.Title = txtTitle.Text.Trim();
             model.ClassId = int.Parse(ddlClassId.SelectedValue);
             model.Content = txtContent.Value;
-            model.Ver = Session["ver"].ToString();
+            model.Ver = ver;
             model.SortId = int.Parse(txtSortId.Text.Trim());
 
             model.ImgUrl = this.txtImgUrl.Text.Trim();
@@ -74,7 +86,7 @@ namespace DtCms.Web.Admin.Contents
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue),"cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue),ver);
                 if (model != null)
                 {
                     this.txtFilepath.Text = model.Filepath;

@@ -22,7 +22,18 @@ namespace DtCms.Web.Admin.Job
         public string property = "";
 
         public string strWhere;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected DataSet ds;
         protected string classList;
         protected int GdClaId;
@@ -72,10 +83,10 @@ namespace DtCms.Web.Admin.Job
                 this.ddlProperty.Visible = false;
 
                 //绑定类别
-                ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.Job, this.ddlClassId, "cn");
-                strWhere = "Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property);
+                ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.Job, this.ddlClassId, ver);
+                strWhere = "Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property);
                 this.RptBind("job.id desc,AddTime desc");
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver);
                 this.ddlClassId.SelectedValue = newsclassid + "";
 
             }
@@ -106,7 +117,7 @@ namespace DtCms.Web.Admin.Job
             this.txtKeywords.Text = this.keywords;
             this.ddlProperty.SelectedValue = this.property;
 
-            this.rptList.DataSource = bll.getPageListJobAndChannel(this.pagesize, this.page, "job.id>0 and job.ver='" + Session["ver"].ToString() + "'", orderby);
+            this.rptList.DataSource = bll.getPageListJobAndChannel(this.pagesize, this.page, "job.id>0 and job.ver='" + ver + "'", orderby);
             this.rptList.DataBind();
            
         }

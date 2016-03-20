@@ -20,7 +20,18 @@ namespace DtCms.Web.Admin.FriendshipLink
 
 
         protected int GdClaId;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.FriendshipLink shipBll = new BLL.FriendshipLink();
         protected BLL.Channel channel = new BLL.Channel();
@@ -31,8 +42,7 @@ namespace DtCms.Web.Admin.FriendshipLink
                 return;
 
             this.lbtnDel.Visible = deleteflag;
-
-            this.ver = Session["ver"].ToString();
+            
             this.pagesize = webset.ContentPageNum;
             if (!int.TryParse(Request.Params["page"] as string, out this.page))
             {
@@ -62,9 +72,8 @@ namespace DtCms.Web.Admin.FriendshipLink
                 this.GdClaId = Convert.ToInt32(message[1]);
             }
             chkLoginLevel("viewContents");
-            //ChannelTreeBind(0, "所有类别", (int)Channel.FriendshipLink, this.ddlClassId, "cn");
-            ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.FriendshipLink, this.ddlClassId, "cn");
-            this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.classId, this.keywords));
+            ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.FriendshipLink, this.ddlClassId, ver);
+            this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.classId, this.keywords));
         }
 
         /// <summary>

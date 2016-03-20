@@ -15,7 +15,18 @@ namespace DtCms.Web.Admin.Video
 
         protected string filepath = "", img = "";
         protected int drpClassId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Video download = new BLL.Video();
         protected string strtitle = "添加";
@@ -45,7 +56,7 @@ namespace DtCms.Web.Admin.Video
             {
                 channelmodel = new BLL.Channel().GetModel(classid);
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Downloads, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Downloads, this.ddlClassId, ver);
 
                 if (Id > 0)
                 {

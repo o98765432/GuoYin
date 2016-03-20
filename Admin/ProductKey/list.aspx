@@ -144,7 +144,9 @@
                 <span class="btn_all" >
                     <linkbutton  id="updateAllInfo"  >修改</linkbutton>
                 </span>&nbsp;
-                <span class="btn_all" onclick="location.href='../Article/list.aspx?classid=<%=Request.QueryString["returnclassid"] %>&showmatypeid=<%=Request.QueryString["returnclassid"] %>'">返回上一级列表</span>
+
+                <asp:LinkButton ID="lbtBack" CssClass="btn_all" runat="server">返回上一级列表</asp:LinkButton>
+
             </div>
 	</div>
     </form>

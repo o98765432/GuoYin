@@ -15,7 +15,18 @@ namespace DtCms.Web.Admin.Downloads
 
         protected string filepath = "", img = "";
         protected int drpClassId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Downloads download = new BLL.Downloads();
         protected string strtitle = "添加";
@@ -41,7 +52,7 @@ namespace DtCms.Web.Admin.Downloads
             {
                 channelmodel = new BLL.Channel().GetModel(classid);
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Downloads, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Downloads, this.ddlClassId, ver);
 
                 if (Id > 0)
                 {
@@ -101,7 +112,7 @@ namespace DtCms.Web.Admin.Downloads
             }
              
             model.Title = txtTitle.Text.Trim();
-            model.Ver = Session["ver"].ToString();
+            model.Ver = ver;
             model.ClassId = int.Parse(ddlClassId.SelectedValue);
             model.ImgUrl = txtImgUrl.Text.Trim();
 

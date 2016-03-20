@@ -22,7 +22,18 @@ namespace DtCms.Web.Admin.Article
         public string property = "";
 
         protected int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected int newsclassid = 0;
@@ -77,10 +88,10 @@ namespace DtCms.Web.Admin.Article
             {
                 this.ddlProperty.Visible = false;
 
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Article, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Article, this.ddlClassId, ver);
 
 
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "SortId asc,AddTime desc,id desc");
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "SortId asc,AddTime desc,id desc");
 
                 this.ddlClassId.SelectedValue = newsclassid + "";
 
@@ -164,7 +175,7 @@ namespace DtCms.Web.Admin.Article
                         bll.UpdateField(id, "IsSlide=1");
                     break;
             }
-            RptBind("Id>0 and ver='" + Session["ver"].ToString() + "' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "AddTime desc");
+            RptBind("Id>0 and ver='" + ver + "' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "AddTime desc");
         }
 
         //类别筛选
@@ -211,7 +222,7 @@ namespace DtCms.Web.Admin.Article
                     //保存日志
                     SaveLogs("[资讯模块]删除文章：" + model.Title);
                     //删除记录
-                    bll.Delete(kindId, id, Session["ver"].ToString());
+                    bll.Delete(kindId, id, ver);
                 }
             }
 

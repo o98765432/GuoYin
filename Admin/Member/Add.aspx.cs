@@ -11,6 +11,19 @@ namespace DtCms.Web.Admin.Member
 {
     public partial class Add : DtCms.Web.UI.ManagePage
     {
+
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -18,7 +31,7 @@ namespace DtCms.Web.Admin.Member
                 btnSave.Visible = addflag;
                 chkLoginLevel("addMember");
                 //绑定类别
-                ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Member, this.ddlClassId,"cn");
+                ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Member, this.ddlClassId,ver);
                 if (!string.IsNullOrEmpty(Request.Params["classId"]))
                 {
                     ddlClassId.SelectedValue = Request.Params["classId"].Trim();
@@ -73,7 +86,7 @@ namespace DtCms.Web.Admin.Member
             }
 
 
-            model.Ver = Session["ver"].ToString();
+            model.Ver = ver;
 
             bll.Add(model);
             //保存日志

@@ -10,7 +10,18 @@ namespace DtCms.Web.Admin.Contents
     public partial class Edit : DtCms.Web.UI.ManagePage
     {
         public int Id;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected BLL.Contents contents = new BLL.Contents();
         protected string classList;
         protected int drpClassId;
@@ -45,7 +56,7 @@ namespace DtCms.Web.Admin.Contents
 
                 channelmodel = new BLL.Channel().GetModel(classid);
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn"); 
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver); 
 
                 if (Id > 0)
                 {
@@ -114,7 +125,7 @@ namespace DtCms.Web.Admin.Contents
             model.Title = txtTitle.Text.Trim();
             model.ClassId = int.Parse(ddlClassId.SelectedValue);
             model.Content = txtContent.Value;
-            model.Ver = Session["ver"].ToString();
+            model.Ver =ver;
             model.SortId = int.Parse(txtSortId.Text.Trim());
 
             model.ImgUrl = this.txtImgUrl.Text.Trim();
@@ -157,7 +168,7 @@ namespace DtCms.Web.Admin.Contents
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue),"cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue),ver);
 
                 this.txtFilepath.Text = model.Filepath;
                 this.litSize.Text = model.Content;

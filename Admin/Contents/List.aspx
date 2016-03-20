@@ -88,8 +88,7 @@
     <%if(addflag == true){%>
     <span class="add"><a href="Edit.aspx?classid=<%=this.classId %>">增加<%=channelmodel.Title %></a></span>
     <%} %>
-    <b>您当前的位置：首页 &gt; <%=channelmodel.Title %>管理 &gt;<%=channelmodel.Title %>列表</b></div>
-    <div class="spClear"></div>
+<b>您当前的位置：首页 &gt; <asp:Label ID="labChannelTitle1" runat="server"></asp:Label>管理 &gt;<asp:Label ID="labChannelTitle2" runat="server"></asp:Label>列表</b></div>    <div class="spClear"></div>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="50" align="center">请选择：</td>
@@ -119,7 +118,7 @@
         <td align="center"><asp:CheckBox ID="cb_id" CssClass="checkall" runat="server" /></td>
         <td align="center"><asp:Label ID="lb_id" runat="server" Text='<%#Eval("Id")%>'></asp:Label></td>
         <td><a href="Edit.aspx?id=<%#Eval("Id") %>&classid=<%=this.classId %>"><%#Eval("Title")%></a></td>
-        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),"cn")%></td>
+        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),ver)%></td>
        
         <td align="center">  
              <input type="text" name ="paixuSortId"  id="<%# Eval("Id")%>" value='<%# Eval("SortId")%>'  style="width: 50px; height: 16px; "  onblur ="getPaixu(this);"  /></td>

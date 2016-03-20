@@ -35,7 +35,6 @@ namespace DtCms.Web.Admin.PageType
             {
 
                 //绑定类别
-                //ChannelTreeBind(classid, channelmodel.Title, (int)Channel.SinglePage, this.ddlClassId, "cn");
 
                 if (id > 0)
                 {

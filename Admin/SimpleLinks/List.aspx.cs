@@ -21,7 +21,18 @@ namespace DtCms.Web.Admin.SimpleLinks
         public string property = "";
 
         protected int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
 
@@ -67,8 +78,7 @@ namespace DtCms.Web.Admin.SimpleLinks
                 this.lbtnDel.Visible = deleteflag;
                 chkLoginLevel("viewPicturesLink");
                 //绑定类别
-                //ChannelTreeBind(0, "所有类别", (int)Channel.PicturesLink, this.ddlClassId,"cn");
-                ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.PicturesLink, this.ddlClassId, "cn");
+                ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.PicturesLink, this.ddlClassId, ver);
                 RptBind("Id>0 and ver='" + Session["ver"].ToString() + "' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "SortId");
             }
         }
@@ -176,6 +186,9 @@ namespace DtCms.Web.Admin.SimpleLinks
                     {
                         case "cn":
                             banben = "中文版";
+                            break;
+                        case "cn-tw":
+                            banben = "繁体中文版";
                             break;
                         case "en":
                             banben = "英文版";

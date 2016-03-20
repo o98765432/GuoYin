@@ -157,7 +157,18 @@ namespace DtCms.Web.Admin.Module
     {
         DtCms.Model.Module model = new DtCms.Model.Module();
         DtCms.BLL.Module bll = new DtCms.BLL.Module();
-        public String ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
 
         public int pcount;                     //总条数
         public int page;                       //当前页

@@ -23,7 +23,18 @@ namespace DtCms.Web.Admin.Pictures
 
 
         public int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected int newsclassid = 0;
@@ -91,10 +102,10 @@ namespace DtCms.Web.Admin.Pictures
 
                 this.ddlProperty.Visible = false;
 
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver);
 
              
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "SortId asc,AddTime desc");
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "SortId asc,AddTime desc");
 
                 this.ddlClassId.SelectedValue = newsclassid + "";
 
@@ -173,7 +184,7 @@ namespace DtCms.Web.Admin.Pictures
                         bll.UpdateField(id, "IsSlide=1");
                     break;
             }
-            this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc");
+            this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc");
         }
 
         //类别筛选

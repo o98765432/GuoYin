@@ -12,6 +12,19 @@ namespace DtCms.Web.Admin.SimpleLinks
     public partial class Add : DtCms.Web.UI.ManagePage
     {
         protected int classid;
+
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -25,8 +38,7 @@ namespace DtCms.Web.Admin.SimpleLinks
                 btnSave.Visible = addflag;
                 chkLoginLevel("addPicturesLink");
                 //绑定类别
-                ChannelTreeBind(classid, "请选择所属类别...", (int)Channel.PicturesLink, this.ddlClassId, "cn");
-                //ChannelTreeBind(0, "请选择所属类别...", (int)Channel.PicturesLink, this.ddlClassId,"cn");
+                ChannelTreeBind(classid, "请选择所属类别...", (int)Channel.PicturesLink, this.ddlClassId, ver);
                 if (!string.IsNullOrEmpty(Request.Params["classId"]))
                 {
                     ddlClassId.SelectedValue = Request.Params["classId"].Trim();

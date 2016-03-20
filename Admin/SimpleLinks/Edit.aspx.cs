@@ -14,7 +14,18 @@ namespace DtCms.Web.Admin.SimpleLinks
         public int Id;
         protected string img = "";
         protected int drpClassId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.PicturesLink link = new BLL.PicturesLink();
 
@@ -42,8 +53,7 @@ namespace DtCms.Web.Admin.SimpleLinks
                 btnSave.Visible = updateflag;
                 chkLoginLevel("editPicturesLink");
                 //绑定类别
-                ChannelTreeBind(this.drpClassId, "请选择所属类别...", (int)Channel.PicturesLink, this.ddlClassId, "cn");
-                //ChannelTreeBind(0, "请选择所属类别...", (int)Channel.PicturesLink, this.ddlClassId,"cn");
+                ChannelTreeBind(this.drpClassId, "请选择所属类别...", (int)Channel.PicturesLink, this.ddlClassId, ver);
                 ShowInfo(this.Id);
             }
         }

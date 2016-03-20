@@ -18,6 +18,18 @@ namespace DtCms.Web.Admin.SinglePage
         protected string strtitle = "添加";
         protected Model.Channel channelmodel = new Model.Channel();
 
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,7 +47,7 @@ namespace DtCms.Web.Admin.SinglePage
             {
 
                 //绑定类别
-                ChannelTreeBind(classid, channelmodel.Title, (int)Channel.SinglePage, this.ddlClassId, "cn");
+                ChannelTreeBind(classid, channelmodel.Title, (int)Channel.SinglePage, this.ddlClassId, ver);
 
                 if (id > 0)
                 {

@@ -15,9 +15,20 @@ namespace WEB.manage.Module
 	{
         DtCms.Model.Module model = new DtCms.Model.Module();
         DtCms.BLL.Module bll = new DtCms.BLL.Module();
-		public String ver = "cn";
-		#region 页面加载方法
-		protected void Page_Load(object sender, EventArgs e)
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
+        #region 页面加载方法
+        protected void Page_Load(object sender, EventArgs e)
 		{
 			if(!Page.IsPostBack)
 			{

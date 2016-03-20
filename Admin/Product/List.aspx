@@ -94,7 +94,7 @@
         <td align="center"><asp:CheckBox ID="cb_id" CssClass="checkall" runat="server" /></td>
         <td align="center"><asp:Label ID="lb_id" runat="server" Text='<%#Eval("Id")%>'></asp:Label></td>
         <td><a href="Edit.aspx?id=<%#Eval("Id") %>&classid=<%=this.classId %>&page=<%=page %>"><%#Eval("Title")%></a></td>
-        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("classId")),"cn")%></td>
+        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("classId")),ver)%></td>
              <td align="center"><%#string.Format("{0:g}",Eval("AddTime"))%></td>
               <td align="center">
            

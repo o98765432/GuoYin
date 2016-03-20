@@ -23,7 +23,18 @@ namespace DtCms.Web.Admin.Banner
         protected int classId;
 
 
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected string sqlWhere;
 
@@ -33,7 +44,6 @@ namespace DtCms.Web.Admin.Banner
         protected Model.Channel channelmodel = new Model.Channel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ver = Session["ver"].ToString();
             this.pagesize = webset.ContentPageNum;
             if (!int.TryParse(Request.Params["page"] as string, out this.page))
             {
@@ -62,7 +72,7 @@ namespace DtCms.Web.Admin.Banner
             }
 
             channelmodel = channel.GetModel(this.classId);
-
+            labChannelTitle1.Text = labChannelTitle2.Text = channelmodel.Title;
             if (!string.IsNullOrEmpty(Request.Params["keywords"]))
             {
                 this.keywords = Request.Params["keywords"].Trim();
@@ -78,10 +88,10 @@ namespace DtCms.Web.Admin.Banner
                 }
 
          
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Article, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Article, this.ddlClassId, ver);
 
 
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property));
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property));
 
                 this.ddlClassId.SelectedValue = newsclassid + "";
             }
@@ -146,7 +156,7 @@ namespace DtCms.Web.Admin.Banner
                 _keywords = this.txtKeywords.Text;
             }
             //转向页面
-            RptBind("Id>0 and ver='" + Session["ver"].ToString() + "' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property));
+            RptBind("Id>0 and ver='" + ver + "' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property));
         }
         protected void lbtnDel_Click(object sender, EventArgs e)
         {

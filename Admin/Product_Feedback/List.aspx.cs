@@ -13,6 +13,18 @@ namespace DtCms.Web.Admin.Product_Feedback
         public int page;                        //当前页
         public int pagesize;                    //设置每页显示的大小
 
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         public string keywords = "";
         public string property = "";
 
@@ -37,8 +49,8 @@ namespace DtCms.Web.Admin.Product_Feedback
             {
                 this.lbtnDel.Visible = deleteflag;
                 chkLoginLevel("viewProductFeedback");
-                ChannelTreeBind(0, "所有类别", (int)Channel.Product, this.ddlClassId,"cn");
-                int _classId;
+                ChannelTreeBind(0, "所有类别", (int)Channel.Product, this.ddlClassId,ver);
+                //int _classId; 符佳华
                
                 if (Request.QueryString["classid"] != null) {
                     //GetData(Request.QueryString["classid"]);
@@ -64,11 +76,11 @@ namespace DtCms.Web.Admin.Product_Feedback
             {
                 this.ddlProductId.SelectedValue = productid;
                 this.ddlClassId.SelectedValue = classid;
-                this.RptBind("Id>0 and ver='"+Session["ver"].ToString()+"' and TypeId=" + productid + CombSqlTxt(this.keywords, this.property));
+                this.RptBind("Id>0 and ver='"+ver+"' and TypeId=" + productid + CombSqlTxt(this.keywords, this.property));
             }
             else
             {
-                this.RptBind("Id>0 and ver='"+Session["ver"].ToString()+"' " + CombSqlTxt(this.keywords, this.property));
+                this.RptBind("Id>0 and ver='"+ver+"' " + CombSqlTxt(this.keywords, this.property));
             }
             //}
             //else
@@ -205,7 +217,7 @@ namespace DtCms.Web.Admin.Product_Feedback
             this.rptList.DataBind();
 
             DtCms.BLL.Product bll = new DtCms.BLL.Product();
-            this.ddlProductId.DataSource = bll.GetList(" classid=" +  int.Parse(this.ddlClassId.SelectedValue)+" and ver='"+Session["ver"].ToString()+"'");
+            this.ddlProductId.DataSource = bll.GetList(" classid=" +  int.Parse(this.ddlClassId.SelectedValue)+" and ver='"+ver+"'");
             this.ddlProductId.DataTextField = "Title";
             this.ddlProductId.DataValueField = "Id";
             this.ddlProductId.DataBind();

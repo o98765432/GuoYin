@@ -21,7 +21,18 @@ namespace DtCms.Web.Admin.Product_Downloads
         public string property = "";
 
         protected int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
 
@@ -68,8 +79,7 @@ namespace DtCms.Web.Admin.Product_Downloads
                 this.lbtnDel.Visible = deleteflag;
                 chkLoginLevel("viewProductDownloads");
                 //绑定类别
-                ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.Product, this.ddlClassId, "cn");
-                //ChannelTreeBind(0, "所有类别", (int)Channel.Product, this.ddlClassId,"cn");
+                ChannelTreeBind(this.GdClaId, "所有类别", (int)Channel.Product, this.ddlClassId, ver);
              
             }
         }
@@ -172,7 +182,7 @@ namespace DtCms.Web.Admin.Product_Downloads
             this.rptList.DataBind();
 
             DtCms.BLL.Product bll = new DtCms.BLL.Product();
-            this.ddlProductId.DataSource = bll.GetList(" classid=" + int.Parse(this.ddlClassId.SelectedValue)+" and ver='"+Session["ver"].ToString()+"'");
+            this.ddlProductId.DataSource = bll.GetList(" classid=" + int.Parse(this.ddlClassId.SelectedValue)+" and ver='"+ver+"'");
             this.ddlProductId.DataTextField = "Title";
             this.ddlProductId.DataValueField = "Id";
             this.ddlProductId.DataBind();
@@ -226,7 +236,7 @@ namespace DtCms.Web.Admin.Product_Downloads
                     //保存日志
                     SaveLogs("[下载模块]删除下载：" + model.Title);
                     //删除记录
-                    bll.Delete(this.kindId,id,Session["ver"].ToString());
+                    bll.Delete(this.kindId,id,ver);
                 }
             }
             JscriptPrint("批量删除成功啦！", "List.aspx?" + CombUrlTxt(this.classId, this.keywords, this.property) + "page=0", "Success");

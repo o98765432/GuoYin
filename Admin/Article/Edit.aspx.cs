@@ -16,7 +16,18 @@ namespace DtCms.Web.Admin.Article
 
         protected string img = "", indeximg = "",xtimg="";
         protected int drpClassId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Article article = new BLL.Article();
         protected string strtitle = "添加";
@@ -56,7 +67,7 @@ namespace DtCms.Web.Admin.Article
 
                 
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Article, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Article, this.ddlClassId, ver);
 
                 if (Id > 0)
                 {
@@ -316,7 +327,7 @@ namespace DtCms.Web.Admin.Article
 
             }
             model.Herf = this.wailians.Text;
-            model.Ver = Session["ver"].ToString();
+            model.Ver = ver;
 
             SaveLogs("[资讯模块]编辑文章：" + model.Title);
 
@@ -411,7 +422,7 @@ namespace DtCms.Web.Admin.Article
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), "cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), ver);
 
                 this.txtFilepath.Text = model.Filepath;
                 this.litSize.Text = model.Content;

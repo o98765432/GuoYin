@@ -44,9 +44,9 @@
 <body style="padding:10px;">
     <form id="form1" runat="server">
     <div class="navigation">
-    <%if(addflag ==  true){%>
+   <%-- <%if(addflag ==  true){%>
         <span class="add"><a href="Add.aspx??classid=<%=this.GdClaId %>">增加下载</a></span>
-    <%} %>
+    <%} %>--%>
     <span class="add"><a href="Add.aspx??classid=<%=this.GdClaId %>">增加下载</a></span><b>您当前的位置：首页 &gt; 下载管理 &gt; 信息列表</b></div>
     <div class="spClear"></div>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -89,7 +89,7 @@
         <td align="center"><asp:CheckBox ID="cb_id" CssClass="checkall" runat="server" /></td>
         <td align="center"><asp:Label ID="lb_id" runat="server" Text='<%#Eval("Id")%>'></asp:Label></td>
         <td><%# Convert.ToInt32(Eval("IsLock")) == 1 ? "<img src=\"../Images/wsh01.gif\" title=\"不显示\" />" : ""%> <a href="Edit.aspx?id=<%#Eval("Id") %>"><%#Eval("Title")%></a></td>
-        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),"cn")%></td>
+        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),ver)%></td>
         <td align="center"><%#Eval("FileType")%></td>
         <td align="center"><%#Convert.ToInt32(Eval("FileSize")) < 1024 ? Eval("FileSize").ToString() + " KB" : (Convert.ToDecimal(Eval("FileSize")) / 1024).ToString("#.##")+" M"%></td>
         <td><%#string.Format("{0:g}", Eval("AddTime"))%></td>

@@ -13,7 +13,18 @@ namespace DtCms.Web.Admin.Product_Downloads
     {
         public int Id;
         protected int drpClassId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.ProductDownloads proDownload = new BLL.ProductDownloads();
 
@@ -39,8 +50,7 @@ namespace DtCms.Web.Admin.Product_Downloads
                 btnSave.Visible = updateflag; 
                 chkLoginLevel("editProductDownloads");
                 //绑定类别
-                ChannelTreeBind(this.drpClassId, "请选择所属类别...", (int)Channel.Product, this.ddlClassId, "cn");
-                //ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Product, this.ddlClassId,"cn");
+                ChannelTreeBind(this.drpClassId, "请选择所属类别...", (int)Channel.Product, this.ddlClassId, ver);
                 
                 ShowInfo(this.Id);
 
@@ -135,7 +145,7 @@ namespace DtCms.Web.Admin.Product_Downloads
                 model.IsMsg = 0;
                 model.IsRed = 0;
                 model.IsLock = 0;
-                model.Ver = Session["ver"].ToString();
+                model.Ver =ver;
                 //if (cblItem.Items[0].Selected == true)
                 //{
                 //    model.IsMsg = 1;
@@ -164,7 +174,7 @@ namespace DtCms.Web.Admin.Product_Downloads
         protected void ddlClassId_SelectedIndexChanged(object sender, EventArgs e)
         {
             DtCms.BLL.Product bll = new DtCms.BLL.Product();
-            this.ddlProductId.DataSource = bll.GetList(" classid=" + int.Parse(this.ddlClassId.SelectedValue)+" and ver='"+Session["ver"].ToString()+"'");
+            this.ddlProductId.DataSource = bll.GetList(" classid=" + int.Parse(this.ddlClassId.SelectedValue)+" and ver='"+ver+"'");
             this.ddlProductId.DataTextField = "Title";
             this.ddlProductId.DataValueField = "Id";
             this.ddlProductId.DataBind();

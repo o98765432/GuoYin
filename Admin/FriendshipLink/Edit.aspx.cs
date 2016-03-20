@@ -13,14 +13,24 @@ namespace DtCms.Web.Admin.FriendshipLink
         protected int classid;
         protected int drpClassId;
         public int id;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.FriendshipLink shipLink = new BLL.FriendshipLink();
 
         protected string strtitle = "添加";
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ver = Session["ver"].ToString();
             if (!string.IsNullOrEmpty(Request.QueryString["id"]))
             {
                 this.id = Convert.ToInt32(Request.QueryString["id"]);
@@ -46,7 +56,7 @@ namespace DtCms.Web.Admin.FriendshipLink
                 btnSave.Visible = updateflag;
                 chkLoginLevel("editDownloads");
                 //绑定类别
-                ChannelTreeBind(this.drpClassId, "请选择所属类别...", (int)Channel.FriendshipLink, this.ddlClassId, "cn");
+                ChannelTreeBind(this.drpClassId, "请选择所属类别...", (int)Channel.FriendshipLink, this.ddlClassId, ver);
 
                 if (id > 0)
                 {
@@ -112,7 +122,7 @@ namespace DtCms.Web.Admin.FriendshipLink
                 model.ImgUrl = txtImgUrl.Text;
                 model.Href = txtHref.Text;
                 model.HtmlPath = txtFilepath.Text;
-                model.Ver = Session["ver"].ToString();
+                model.Ver = ver;
 
 
                 SaveLogs("[友情链接模块]编辑文章：" + model.Title);
@@ -148,7 +158,7 @@ namespace DtCms.Web.Admin.FriendshipLink
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), "cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), ver);
 
                 // this.txtFilepath.Text = model.Filepath;
 

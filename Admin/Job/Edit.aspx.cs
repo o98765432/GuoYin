@@ -12,6 +12,18 @@ namespace DtCms.Web.Admin.Job
         public int Id;
         protected string strtitle = "添加";
         protected int classid;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected Model.Channel channelmodel = new Model.Channel();
 
         protected DataSet showda = null;
@@ -34,7 +46,7 @@ namespace DtCms.Web.Admin.Job
 
                 channelmodel = new BLL.Channel().GetModel(classid);
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver);
  
                 if (Id > 0)
                 {
@@ -217,7 +229,7 @@ namespace DtCms.Web.Admin.Job
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue),"cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue),ver);
 
                 this.txtFilepath.Text = model.Filepath;
 

@@ -21,6 +21,18 @@ namespace DtCms.Web.Admin.Member
         public string keywords = "";
         public string property = "";
 
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             this.pagesize = webset.DownPageNum;
@@ -43,8 +55,8 @@ namespace DtCms.Web.Admin.Member
                 this.lbtnDel.Visible = deleteflag;
                 chkLoginLevel("viewMember");
                 //绑定类别
-                ChannelTreeBind(0, "所有类别", (int)Channel.Member, this.ddlClassId,"cn");
-                RptBind("Id>0 and ver='"+Session["ver"].ToString()+"' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "AddTime desc");
+                ChannelTreeBind(0, "所有类别", (int)Channel.Member, this.ddlClassId,ver);
+                RptBind("Id>0 and ver='"+ver+"' " + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "AddTime desc");
             }
         }
 
@@ -95,7 +107,7 @@ namespace DtCms.Web.Admin.Member
                     break;
               
             }
-            RptBind("Id>0 and ver='"+Session["ver"].ToString()+"'" + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "AddTime desc");
+            RptBind("Id>0 and ver='"+ver+"'" + CombSqlTxt(this.kindId, this.classId, this.keywords, this.property), "AddTime desc");
         }
 
         //分类筛选
@@ -143,10 +155,13 @@ namespace DtCms.Web.Admin.Member
                     //DeleteFile(model.FilePath);
                     //保存日志
                     string banben = "";
-                    switch (Session["ver"].ToString())
+                    switch (ver)
                     {
                         case "cn":
                             banben = "中文版";
+                            break;
+                        case "cn-tw":
+                            banben = "繁体中文版";
                             break;
                         case "en":
                             banben = "英文版";
@@ -168,7 +183,7 @@ namespace DtCms.Web.Admin.Member
                     }
                     SaveLogs("[图文链接模块]删除图文链接：" + model.Title+"["+banben+"]");
                     //删除记录
-                    bll.Delete(this.kindId,id,Session["ver"].ToString());
+                    bll.Delete(this.kindId,id,ver);
                 }
             }
             JscriptPrint("批量删除成功啦！", "List.aspx?" + CombUrlTxt(this.classId, this.keywords, this.property) + "page=0", "Success");
@@ -177,7 +192,6 @@ namespace DtCms.Web.Admin.Member
         protected void btnGenerate_Click(object sender, EventArgs e)
         {
             string imgurl = "", linkurl = "";
-            string ver = "cn";
             BLL.Member bll = new BLL.Member();
             Model.Member model = new Model.Member();
             XmlDocument xmlDoc = new XmlDocument();

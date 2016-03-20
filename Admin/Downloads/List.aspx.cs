@@ -21,7 +21,18 @@ namespace DtCms.Web.Admin.Downloads
         public string property = "";
 
         protected int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected int newsclassid = 0;
@@ -57,7 +68,9 @@ namespace DtCms.Web.Admin.Downloads
             }
 
             channelmodel = channel.GetModel(this.classId);
-             
+            labChannelTitle1.Text = labChannelTitle2.Text = channelmodel.Title;
+            labChannelTitle1.Text = labChannelTitle2.Text = channelmodel.Title;
+            lbtManage.PostBackUrl = string.Format("../ShowChanner/List.aspx?kindId={0}&path=DownLoad", classId);
 
             if (!string.IsNullOrEmpty(Request.Params["keywords"]))
             {
@@ -72,11 +85,11 @@ namespace DtCms.Web.Admin.Downloads
             {
                 this.lbtnDel.Visible = deleteflag;
                 this.ddlProperty.Visible = false;
+                
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver);
 
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
 
-
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "id desc,AddTime desc");
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "id desc,AddTime desc");
 
                 this.ddlClassId.SelectedValue = newsclassid + "";
             }
@@ -134,7 +147,7 @@ namespace DtCms.Web.Admin.Downloads
                         bll.UpdateField(id, "IsRed=1");
                     break;
             }
-            RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc");
+            RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc");
         }
 
         //类别筛选
@@ -182,7 +195,7 @@ namespace DtCms.Web.Admin.Downloads
                     //保存日志
                     SaveLogs("[下载模块]删除下载：" + model.Title);
                     //删除记录
-                    bll.Delete(this.kindId,id,Session["ver"].ToString());
+                    bll.Delete(this.kindId,id,ver);
                 }
             }
             this.rptList.DataBind();

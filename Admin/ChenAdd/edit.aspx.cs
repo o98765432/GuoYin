@@ -13,7 +13,18 @@ namespace DtCms.Web.Admin.ChenAdd
     public partial class edit : DtCms.Web.UI.ManagePage
     {
         public int Id = 0;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected int classid;
         public int kindId;
         protected int drpClassId;
@@ -34,7 +45,7 @@ namespace DtCms.Web.Admin.ChenAdd
             if (!IsPostBack)
             {
 
-                ChannelTreeBind(0, channelmodel.Title, (int)Channel.Article, this.txtclassid, "cn");
+                ChannelTreeBind(0, channelmodel.Title, (int)Channel.Article, this.txtclassid, ver);
 
 
                 channelmodel = new BLL.Channel().GetModel(classid);

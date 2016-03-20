@@ -11,7 +11,18 @@ namespace DtCms.Web.Admin.Banner
     public partial class Edit : DtCms.Web.UI.ManagePage
     {
         public int Id;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected int classid;
         public int kindId;
         protected int drpClassId;
@@ -26,7 +37,7 @@ namespace DtCms.Web.Admin.Banner
             {
                 this.Id = Convert.ToInt32(Request.QueryString["id"]);
             }
-            DataSet ds = shipLink.GetClassListById(this.Id, Session["ver"].ToString());
+            DataSet ds = shipLink.GetClassListById(this.Id, ver);
             
 
             classid = DtCms.Common.Utils.returnIntByString(Request.QueryString["classid"]);
@@ -37,7 +48,7 @@ namespace DtCms.Web.Admin.Banner
 
                 channelmodel = new BLL.Channel().GetModel(classid);
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Article, this.ddlClassId, "cn"); 
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Article, this.ddlClassId, ver); 
                 if (this.Id > 0)
                 {
                     strtitle = "修改";
@@ -119,7 +130,7 @@ namespace DtCms.Web.Admin.Banner
 
             modelBanner.HtmlPaht = txtHtmlPath.Text;
             modelBanner.AddTime =  DateTime.Now;
-            modelBanner.Ver = Session["ver"].ToString();
+            modelBanner.Ver = ver;
 
             modelBanner.Description = txtContent.Text;
             modelBanner.SortId = Convert.ToInt32(txtSortId.Text);
@@ -224,7 +235,7 @@ namespace DtCms.Web.Admin.Banner
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), "cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), ver);
 
                 // this.txtFilepath.Text = model.Filepath;
 

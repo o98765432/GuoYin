@@ -17,7 +17,18 @@ namespace DtCms.Web.Admin.Product
         protected int classid;
         protected int drpClassId;
         public string itemImgs = "";
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected string strtitle = "添加"; 
@@ -43,7 +54,7 @@ namespace DtCms.Web.Admin.Product
 
                 channelmodel = new BLL.Channel().GetModel(classid);
 
-                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Product, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classid, channelmodel.Title, (int)Channel.Product, this.ddlClassId, ver);
 
                 FieldBind();
 
@@ -386,7 +397,7 @@ namespace DtCms.Web.Admin.Product
 
             
             model.PicturesExtensions = null;
-            model.Ver = Session["ver"].ToString();
+            model.Ver = ver;
             
             //保存日志
             SaveLogs("[产品模块]编辑产品：" + model.Title);

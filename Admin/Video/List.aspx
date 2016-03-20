@@ -48,7 +48,7 @@
     <%if(addflag == true){%>
     <span class="add"><a href="Edit.aspx?classid=<%=this.classId %>">发布<%=channelmodel.Title %></a></span>
     <%} %>
-    <b>您当前的位置：首页 &gt; <%=channelmodel.Title %>管理 &gt; <%=channelmodel.Title %>列表</b></div>
+    <b>您当前的位置：首页 &gt;<asp:Label ID="labChanneTitle1" runat="server"></asp:Label>管理 &gt; <asp:Label ID="labChanneTitle2" runat="server"></asp:Label>列表</b></div>
     <div class="spClear"></div>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -121,10 +121,9 @@
                 </span>
                  <span class="btn_all" >
                    <asp:LinkButton ID="updateInfo" runat="server" onclick="updateInfo_Click">修改</asp:LinkButton>
-
+                     <asp:LinkButton ID="lbtManage" CssClass="btn_all" runat="server">管理菜单</asp:LinkButton>
                 </span>
                   &nbsp;
-                <span class="btn_all" onclick="location.href='../ShowChanner/List.aspx?kindId=<%=classId %>&path=DownLoad'">管理菜单</span>
             </div>
 	</div>
     </form>

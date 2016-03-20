@@ -12,6 +12,18 @@ namespace DtCms.Web.Admin.FriendshipLink
         protected int classid;
         protected BLL.FriendshipLink shipBll = new BLL.FriendshipLink();
         protected Model.FriendshipLink shipModel = new Model.FriendshipLink();
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,8 +41,7 @@ namespace DtCms.Web.Admin.FriendshipLink
 
             chkLoginLevel("addDownloads");
             //绑定类别
-            ChannelTreeBind(this.classid, "请选择所属类别...", (int)Channel.FriendshipLink, this.ddlClassId, "cn");
-            //ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Downloads, this.ddlClassId,"cn");
+            ChannelTreeBind(this.classid, "请选择所属类别...", (int)Channel.FriendshipLink, this.ddlClassId, ver);
 
             if (!string.IsNullOrEmpty(Request.Params["classId"]))
             {
@@ -47,7 +58,7 @@ namespace DtCms.Web.Admin.FriendshipLink
             {
                 DtCms.BLL.Channel bll = new DtCms.BLL.Channel();
                 DtCms.Model.Channel model = new DtCms.Model.Channel();
-                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), "cn");
+                model = bll.GetModel(int.Parse(this.ddlClassId.SelectedValue), ver);
 
                 this.txtFilepath.Text = model.Filepath;
 
@@ -65,7 +76,7 @@ namespace DtCms.Web.Admin.FriendshipLink
                 shipModel.AddTime = DateTime.Now;
                 shipModel.SortId = Convert.ToInt32(txtSortId.Text);
                 shipModel.IsLock = Convert.ToInt32(txtIslock.Text);
-                shipModel.Ver = Session["ver"].ToString();
+                shipModel.Ver = ver;
                 shipModel.ImgUrl = txtImgUrl.Text.Trim();
                 shipModel.HtmlPath = txtFilepath.Text;
 

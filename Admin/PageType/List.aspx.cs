@@ -20,7 +20,18 @@ namespace DtCms.Web.Admin.PageType
 
 
         protected int GdClaId;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
 
         protected BLL.Channel channel = new BLL.Channel();
@@ -29,7 +40,6 @@ namespace DtCms.Web.Admin.PageType
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ver = Session["ver"].ToString();
             this.pagesize = webset.ContentPageNum;
 
             this.lbtnDel.Visible = false;
@@ -70,7 +80,7 @@ namespace DtCms.Web.Admin.PageType
             if (!IsPostBack)
             {
             
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords));
+                this.RptBind("Id>0 and ver='" + ver + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords));
 
                 this.ddlClassId.SelectedValue = this.newsclassid + "";
 
@@ -125,7 +135,7 @@ namespace DtCms.Web.Admin.PageType
                 if (cb.Checked)
                 {
                     //保存日志
-                    SaveLogs("[内容模块]删除内容页：" + bll.GetModel(id, Session["Ver"].ToString()).Title);
+                    SaveLogs("[内容模块]删除内容页：" + bll.GetModel(id, ver).Title);
                     bll.Delete(kindId,id,ver);
                 }
             }

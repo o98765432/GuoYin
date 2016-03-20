@@ -93,7 +93,7 @@
         <td align="center"><asp:CheckBox ID="cb_id" CssClass="checkall" runat="server" /></td>
         <td align="center"><asp:Label ID="lb_id" runat="server" Text='<%#Eval("Id")%>'></asp:Label></td>
         <td><%# Convert.ToInt32(Eval("IsLock")) == 1 ? "<img src=\"../Images/wsh01.gif\" title=\"冻结\" />" : ""%> <%#Eval("Title")%></td>
-        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),"cn")%></td>
+        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),ver)%></td>
         <td align="center"><%#string.Format("{0:g}", Eval("AddTime"))%></td>
         <td align="center">
         <span class="editbtn"><a href="Edit.aspx?id=<%#Eval("Id") %>">修改</a> </span>

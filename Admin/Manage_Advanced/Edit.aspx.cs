@@ -16,7 +16,19 @@ namespace DtCms.Web.Admin.Manage_Advanced
 
         BLL.Module bll = new BLL.Module();
         protected string banben = "", pwd = "";
-        string ver = "cn";
+
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -22,7 +22,18 @@ namespace DtCms.Web.Admin.Consultant
         public string property = "";
 
         protected int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Consultant con = new BLL.Consultant();
         protected int newsclassid = 0;
@@ -62,7 +73,6 @@ namespace DtCms.Web.Admin.Consultant
             }
 
             channelmodel = channel.GetModel(this.classId);
-            this.ver = Session["ver"].ToString();
 
             DataSet ds = channel.GetClassList(this.classId, ver);
 
@@ -90,7 +100,6 @@ namespace DtCms.Web.Admin.Consultant
             if (!Page.IsPostBack)
             {
 
-               // ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
 
                 this.RptBind("Id>0 and typeId = 1 ");
 
@@ -176,7 +185,7 @@ namespace DtCms.Web.Admin.Consultant
             DtCms.Common.HtmlWriter htmlWriter = new HtmlWriter();
 
             DtCms.BLL.Contents bll = new DtCms.BLL.Contents();
-            DataSet ds = bll.GetList(" ver='" + Session["ver"].ToString() + "'");
+            DataSet ds = bll.GetList(" ver='" + ver + "'");
 
             int successCount = 0, failCount = 0;
 

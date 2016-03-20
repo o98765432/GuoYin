@@ -47,8 +47,8 @@
    <%if(addflag == true){%>
     <span class="add"><a href="Edit.aspx?classid=<%=this.classId %>">发布<%=channelmodel.Title %></a></span>
    <%} %>
-  <b>您当前的位置：首页 &gt; <%=channelmodel.Title %>管理 &gt; <%=channelmodel.Title %>列表</b></div>
-   <div class="spClear"></div>
+       <b>您当前的位置：首页 &gt; <asp:Label ID="labChannelTitle1" runat="server"></asp:Label>管理 &gt;<asp:Label ID="labChannelTitle2" runat="server"></asp:Label>列表</b></div>
+           <div class="spClear"></div>
     <table width="100%" border="0" cellspacing="0" cellpadding="0" >
       <tr>
         <td width="50" align="center">请选择：</td>
@@ -88,7 +88,7 @@
         <td align="center">
             <asp:Image ID="Image1" src='<%# Eval("ImgUrl")%> ' runat="server" Width="85px" Height="50px" /></td>
         <td align="center"><%#string.Format("{0:g}",Eval("AddTime"))%></td>
-         <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),"cn")%></td>
+         <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),ver)%></td>
         <td align="center">
               <asp:TextBox ID="paixuSortId"  style="width: 50px; height: 16px; " text='<%# Eval("SortId")%>' runat="server"></asp:TextBox> 
          </td>

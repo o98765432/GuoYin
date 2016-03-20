@@ -20,7 +20,18 @@ namespace DtCms.Web.Admin.ChenAdd
         public string keywords = "";
         public string property = "";
 
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected int newsclassid = 0;

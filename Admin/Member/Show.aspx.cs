@@ -12,6 +12,18 @@ namespace DtCms.Web.Admin.Member
     public partial class Show : DtCms.Web.UI.ManagePage
     {
         public int Id;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +37,7 @@ namespace DtCms.Web.Admin.Member
                 btnSave.Visible = updateflag;
                 chkLoginLevel("editMember");
                 //绑定类别
-                ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Member, this.ddlClassId,"cn");
+                ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Member, this.ddlClassId,ver);
                 ShowInfo(this.Id);
             }
         }
@@ -83,7 +95,7 @@ namespace DtCms.Web.Admin.Member
             model.UserPhone = txtTel.Text.Trim();
             model.UserPwd = "";
             model.UserSex = "";           
-            model.Ver = Session["ver"].ToString();
+            model.Ver = ver;
 
             bll.Update(model);
             //保存日志

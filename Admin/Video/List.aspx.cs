@@ -20,7 +20,18 @@ namespace DtCms.Web.Admin.Video
         public string property = "";
 
         protected int GdClaId;
-        protected string ver = "cn";
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected BLL.Channel channel = new BLL.Channel();
         protected int newsclassid = 0;
@@ -52,8 +63,9 @@ namespace DtCms.Web.Admin.Video
                 }
 
             }
-
+            lbtManage.PostBackUrl = string.Format("../ShowChanner/List.aspx?kindId={0}&path=DownLoad", classId);
             channelmodel = channel.GetModel(this.classId);
+            labChanneTitle1.Text = labChanneTitle2.Text = channelmodel.Title;
             DataSet ds = channel.GetClassList(this.classId, ver);
 
           
@@ -72,7 +84,7 @@ namespace DtCms.Web.Admin.Video
                 this.lbtnDel.Visible = deleteflag;
                 this.ddlProperty.Visible = false;
 
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Pictures, this.ddlClassId, ver);
 
 
                 this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords, this.property), "AddTime desc,id desc");

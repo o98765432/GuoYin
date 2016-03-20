@@ -19,7 +19,18 @@ namespace DtCms.Web.Admin.SinglePage
 
 
         protected int GdClaId;
-        protected string ver;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
 
         protected BLL.Channel channel = new BLL.Channel();
@@ -28,7 +39,6 @@ namespace DtCms.Web.Admin.SinglePage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ver = Session["ver"].ToString();
             this.pagesize = webset.ContentPageNum;
             if (!int.TryParse(Request.Params["page"] as string, out this.page))
             {
@@ -53,7 +63,7 @@ namespace DtCms.Web.Admin.SinglePage
                 }
                 else
                 {
-
+                    
                     newsclassid = this.classId;
 
                 }
@@ -68,7 +78,7 @@ namespace DtCms.Web.Admin.SinglePage
             {
                 this.lbtnDel.Visible = deleteflag; 
                
-                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.SinglePage, this.ddlClassId, "cn");
+                ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.SinglePage, this.ddlClassId, ver);
             
                 this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "'" + CombSqlTxt(this.kindId, this.newsclassid, this.keywords));
 

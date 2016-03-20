@@ -12,6 +12,18 @@ namespace DtCms.Web.Admin.Product_Downloads
     public partial class Add : DtCms.Web.UI.ManagePage
     {
         protected int classid;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["classid"].ToString() != "" && Request.QueryString["classid"] != null)
@@ -26,8 +38,7 @@ namespace DtCms.Web.Admin.Product_Downloads
                 chkLoginLevel("addProductDownloads");
                 //绑定类别
 
-                ChannelTreeBind(classid, "请选择所属类别...", (int)Channel.Product, this.ddlClassId, "cn");
-               // ChannelTreeBind(0, "请选择所属类别...", (int)Channel.Product, this.ddlClassId,"cn");
+                ChannelTreeBind(classid, "请选择所属类别...", (int)Channel.Product, this.ddlClassId, ver);
                 if (!string.IsNullOrEmpty(Request.Params["classId"]))
                 {
                     ddlClassId.SelectedValue = Request.Params["classId"].Trim();
@@ -87,7 +98,7 @@ namespace DtCms.Web.Admin.Product_Downloads
                 model.IsMsg = 0;
                 model.IsRed = 0;
                 model.IsLock = 0;
-                model.Ver = Session["ver"].ToString();
+                model.Ver = ver;
                 //if (cblItem.Items[0].Selected == true)
                 //{
                 //    model.IsMsg = 1;

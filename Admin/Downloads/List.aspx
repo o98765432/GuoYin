@@ -48,7 +48,7 @@
     <%if(addflag == true){%>
     <span class="add"><a href="Edit.aspx?classid=<%=this.classId %>">发布<%=channelmodel.Title %></a></span>
     <%} %>
-    <b>您当前的位置：首页 &gt; <%=channelmodel.Title %>管理 &gt; <%=channelmodel.Title %>列表</b></div>
+    <b>您当前的位置：首页 &gt; <asp:Label ID="labChannelTitle1" runat="server"></asp:Label>管理 &gt;<asp:Label ID="labChannelTitle2" runat="server"></asp:Label>列表</b></div>
     <div class="spClear"></div>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -87,7 +87,7 @@
         <td align="center"><asp:CheckBox ID="cb_id" CssClass="checkall" runat="server"  /></td>
         <td align="center"><asp:Label ID="lb_id" runat="server" Text='<%#Eval("Id")%>'></asp:Label></td>
         <td><a href="Edit.aspx?id=<%#Eval("Id") %>&classid=<%=this.classId %>&page=<%=page %>"><%#Eval("Title")%></a></td>
-        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),"cn")%></td>
+        <td align="center"><%# new DtCms.BLL.Channel().GetChannelTitle(Convert.ToInt32(Eval("ClassId")),ver)%></td>
         <td align="center"><img src="<%#Eval("imgurl")%>" width="50" height="50" /></td>
          <td align="center"><%#string.Format("{0:g}", Eval("AddTime"))%></td>
         <td align="center">  
@@ -124,7 +124,9 @@
                    <asp:LinkButton ID="updateInfo" runat="server" onclick="updateInfo_Click">修改</asp:LinkButton>
                 </span>
                   &nbsp;
-                <span class="btn_all" onclick="location.href='../ShowChanner/List.aspx?kindId=<%=classId %>&path=DownLoad'">管理菜单</span>
+
+
+                <asp:LinkButton ID="lbtManage" CssClass="btn_all" runat="server">管理菜单</asp:LinkButton>
             </div>
 	</div>
     </form>

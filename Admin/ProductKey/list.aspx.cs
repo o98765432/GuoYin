@@ -18,8 +18,19 @@ namespace DtCms.Web.Admin.ProductKey
         protected string property = "";
         protected string keywords = "";
         protected string prolistview = ""; 
-        protected int classId; 
-        protected string ver;
+        protected int classId;
+        protected string ver
+        {
+            get
+            {
+                if (_ver == string.Empty)
+                {
+                    _ver = Session["ver"].ToString();
+                }
+                return _ver;
+            }
+        }
+        protected string _ver = string.Empty;
         protected string classList;
         protected string sqlWhere;
         protected int shownowid;
@@ -30,7 +41,6 @@ namespace DtCms.Web.Admin.ProductKey
         protected Model.Channel channelmodel = new Model.Channel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ver = Session["ver"].ToString();
             this.pagesize = webset.ContentPageNum;
             if (!int.TryParse(Request.Params["page"] as string, out this.page))
             {
@@ -49,7 +59,7 @@ namespace DtCms.Web.Admin.ProductKey
             }
 
             channelmodel = channel.GetModel(this.classId);
-
+            lbtBack.PostBackUrl = string.Format("../Article/list.aspx?classid={0}&showmatypeid={1}", returnclassid, returnclassid);
             if (!string.IsNullOrEmpty(Request.Params["keywords"]))
             {
                 this.keywords = Request.Params["keywords"].Trim();
@@ -78,10 +88,9 @@ namespace DtCms.Web.Admin.ProductKey
             {
 
                 this.lbtnDel.Visible = deleteflag;
-                //ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Article, this.ddlClassId, "cn");
 
 
-                this.RptBind("Id>0 and ver='" + Session["ver"].ToString() + "' and classid=" + this.classId + " and blinfo6 like '" + shownowid + "' ");
+                this.RptBind("Id>0 and ver='" + ver + "' and classid=" + this.classId + " and blinfo6 like '" + shownowid + "' ");
  
             }
 
@@ -145,7 +154,7 @@ namespace DtCms.Web.Admin.ProductKey
                 _keywords = this.txtKeywords.Text;
             }
             //转向页面
-            RptBind("Id>0 and ver='" + Session["ver"].ToString() + "' and classid=" + classId + " " + "&shownowid=" + shownowid);
+            RptBind("Id>0 and ver='" + ver + "' and classid=" + classId + " " + "&shownowid=" + shownowid);
         }
         protected void lbtnDel_Click(object sender, EventArgs e)
         {

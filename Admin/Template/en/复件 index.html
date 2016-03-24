@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="@SeoKeyWords@" />
+    <meta name="Description" content="@SeoDes@" />
+    <title>@SeoTitle@</title>
+    <link href="/en/webcss/global.css" rel="stylesheet" type="text/css" />
+    <link href="/en/webcss/layout.css" rel="stylesheet" type="text/css" />
+    <script src="/en/webjs/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="/en/webjs/jquery.easing.min.js" type="text/javascript"></script>
+    <script src="/en/webjs/jquery.mousewheel.js" type="text/javascript"></script>
+    <script src="/en/webjs/layoutjs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            in_banner(); //首页banner滚动
+            businessUl(); //业务滚动
+            IndexTab(); //新闻列表选项卡
+            Lg(); //头部语言选择
+            MenuAboutUs(); //关于我们二级菜单
+            $("#top1").addClass("select");
+
+        });
+    </script>
+    <style type="text/css">
+        body{overflow:hidden; width:100%; height:100%;}
+    </style>
+</head>
+<body>
+    <div class="bodys">
+        <div class="body_box">
+            <div id="top">
+             <!--include-->Top.html<!--/include-->
+            </div>
+
+            <div class="inbannerbox">
+                <div class="in_bannerbox" id="in_banner">
+                    <ul>
+                    <!--List table="banner" typeid="52"  where="ClassId=92" order="sortid asc,id desc"-->
+                    <li><a href="@Herf@"><img src="@ImgUrl@" alt="" /></a></li>
+                    <!--/List-->   
+                    </ul>
+                    <div class="banner_tab"></div>
+                </div>
+            </div>
+        <div class="clearfloat"></div> 
+        </div>
+        <div class="clearfloat"></div>
+        <div class="body_box">
+            <div class="business_box">
+                <p class="in_business_title"><a  href="/en/Yewu/index.html"><img  src="/en/Images/t19.jpg" alt="" /></a></p>
+                <div class="business_listbox">
+                    <a href="javascript:" class="business_prev"></a><a href="javascript:" class="business_next"></a>
+                    <div class="business_list" id="business_list">
+                        <ul>
+                        <!--List table="product" typeid="97" order="sortid asc"-->
+                            <li>
+                                <div class="in_business_box">
+                                    <p class="in_business_img">
+                                        <a href="/en/Yewu/@id@.html">
+                                            <img src="@ImgUrl2@" alt="" /></a>
+                                    </p>
+                                    <p class="in_business_title"><a href="/en/Yewu/@id@.html">@Title@</a></p>
+                                    <p class="in_business_cont">@ContentInfo11s@</p>
+                                </div>
+                            </li>
+                        <!--/List-->   
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+        <div class="clearfloat"></div>
+        <div class="body_box in_bg">
+            <p class="in_about_us_title"><a href="/en/about/index.html"><img src="/en/Images/t_1_0.png" alt="" width="152" height="76"/></a></p>
+            <div class="in_about_us_box">
+                <div class="in_about_us_fl in_animatebox_left in_animatbox_1">
+                    <div class="in_about_us_flpad">
+                        <a href="/en/about/index.html"><p class="in_about_us_fl_title">Company Profile</p>
+                        <p class="in_about_us_fl_img"><img src="/en/Images/t21.jpg" alt=""/></p>
+                        <p class="in_about_us_fl_txt">China Development Bank Leasing (hereinafter “CDB Leasing” or the “Company”) is a non-bank financial institution, in which China Development Bank holds majority stakes....<a href="/en/about/index.html" class="testcss">[More>>]</a></p></a>
+                    </div>
+                </div>
+                <div class="in_about_us_fr in_animatebox_right in_animatbox_2">
+                    <a href="/en/course/index.html" class="fl in_about_us_fr_awidth">
+                        <span class="in_about_us_fr_item">History</span>
+                    </a>
+                    <a href="/en/honor/index.html" class="fr in_about_us_fr_awidth">
+                        <span class="in_about_us_fr_item in_about_us_fr_item2">Main Honors</span>
+                    </a>
+                    <a href="/en/scope/index.html" class="fl in_about_us_fr_awidth">
+                        <span class="in_about_us_fr_item in_about_us_fr_item3">Business Scope</span>
+                    </a>
+                    <a href="/en/chart/index.html" class="fr in_about_us_fr_awidth">
+                        <span class="in_about_us_fr_item in_about_us_fr_item4">Organization Chart</span>
+                    </a>
+                </div>
+                                    
+            </div>
+        </div>
+        <div class="clearfloat"></div>
+        <div class="body_box">
+            <p class="in_about_us_title in_news_fl_title"><a href="/en/News/index82.html"><img src="/en/Images/t_3.jpg" alt="" width="255" height="74"/></a></p>
+            <div class="in_about_us_box">
+                <div class="in_news_fl in_animatbox_1">
+                    <div class="in_news_fl_tab" id="in_news_fl_tab">
+                        <a href="/en/News/index82.html" class="curr">Corporate Events</a>
+                        <span>|</span>
+                        <a href="/en/News/index84.html">CDB Events</a>
+                        <span>|</span>
+                        <a href="/en/News/index83.html">Industry Information</a>
+                        <span>|</span>
+                        <a href="/en/News/index85.html">Media Attention</a>
+                        <!--<span>|</span>
+                        <a href="/News/index49.html">政策法规</a>-->
+                    </div>
+
+                    <div class="in_news_fl_tabbox block">
+                        <ul class="newbox_ul">
+                            <!--List table="news" typeid="82" where="IsHot=1"  num="3" order="SortId asc,AddTime desc,id desc"-->
+                            <li>
+                                <div class="fl newfl">
+                                    <div class="newfl_day">@day@</div>
+                                    <div class="newfl_tiem">@year@.@showmonth@</div>
+                                </div>
+                                <div class="fr newfr in_newfr">
+                                    <p><a href="/en/News/@id@.html" class="news_title testcss">@Title@</a></p>
+                                    <p class="news_cont">@Daodu1@</p>
+                                </div>
+                                <div class="clearfloat"></div>
+                            </li>
+                          <!--/List--> 
+                        </ul>
+                    </div>
+                    <div class="in_news_fl_tabbox">
+                        <ul class="newbox_ul">
+                          <!--List table="news" typeid="84" where="IsHot=1"  num="3" order="SortId asc,AddTime desc,id desc"-->
+                            <li>
+                                <div class="fl newfl">
+                                    <div class="newfl_day">@day@</div>
+                                    <div class="newfl_tiem">@year@.@showmonth@</div>
+                                </div>
+                                <div class="fr newfr in_newfr">
+                                    <p><a href="/en/News/@id@.html" class="news_title testcss">@Title@</a></p>
+                                    <p class="news_cont">@Daodu1@</p>
+                                </div>
+                                <div class="clearfloat"></div>
+                            </li>
+                        <!--/List--> 
+                        </ul>
+                    </div>
+                    <div class="in_news_fl_tabbox">
+                        <ul class="newbox_ul">
+                             <!--List table="news" typeid="83" where="IsHot=1"  num="3" order="SortId asc,AddTime desc,id desc"-->
+                            <li>
+                                <div class="fl newfl">
+                                    <div class="newfl_day">@day@</div>
+                                    <div class="newfl_tiem">@year@.@showmonth@</div>
+                                </div>
+                                <div class="fr newfr in_newfr">
+                                    <p><a href="/en/News/@id@.html" class="news_title testcss">@Title@</a></p>
+                                    <p class="news_cont">@Daodu1@</p>
+                                </div>
+                                <div class="clearfloat"></div>
+                            </li>
+                        <!--/List--> 
+                        </ul>
+                    </div>
+                    <div class="in_news_fl_tabbox">
+                        <ul class="newbox_ul">
+                            <!--List table="news" typeid="85" where="IsHot=1"  num="3" order="SortId asc,AddTime desc,id desc"-->
+                            <li>
+                                <div class="fl newfl">
+                                    <div class="newfl_day">@day@</div>
+                                    <div class="newfl_tiem">@year@.@showmonth@</div>
+                                </div>
+                                <div class="fr newfr in_newfr">
+                                    <p><a href="/en/News/@id@.html" class="news_title testcss">@Title@</a></p>
+                                    <p class="news_cont">@Daodu1@</p>
+                                </div>
+                                <div class="clearfloat"></div>
+                            </li>
+                        <!--/List--> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="in_news_fr in_animatbox_2">
+                    <div class="in_news_frpadding">
+                        <a href="/en/about/index.html">
+                        <div class="in_cactant_map"><img src="/en/Images/maps_1.jpg" alt="" width="264" height="220"/></div>
+                        <p class="testcss in_cactant_names">China Development Bank Leasing</p>
+                        <div class="in_cactant_addres">
+                            43, 49-52/F, New World Center, 6009 Yitian Road, Shenzhen, China<br />
+                            Tel：86-755- 2398 0999<br />
+                            Fax：86-755- 2398 0900
+                            <br />
+                        </div>
+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfloat"></div>
+          
+    </div>
+        <div class="clearfloat"></div>
+      
+    <!--button start-->
+    <span class="in_btn"></span>
+    <div class="in_right_btnbox">
+        <span class="in_right_button1"></span>
+        <span class="in_right_button2"></span>
+        <span class="in_right_button3"></span>
+       <!-- <span class="in_right_button4"></span>-->
+        <span class="in_right_button5"></span>
+    </div>
+    <!--button end-->
+    <!--content start-->
+    <!--<div>http://www.cdb-leasing.com/Beyond Compare</div>-->
+    <!--content end-->
+</body>
+</html>

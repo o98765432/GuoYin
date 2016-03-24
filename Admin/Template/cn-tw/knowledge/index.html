@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+        <!--include-->Top.html<!--/include-->
+    </div>
+
+    <!--List table="banner" typeid="1"  where="ClassId=28" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+    <!--/List-->   
+    <div class="content">
+        <div class="title_cent">
+            <img src="/Images/t_7.jpg" alt=""/>
+        </div>  
+    </div>
+    <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="">
+                <p class="content_title content_title1">租赁知识</p>
+                <div class="newbox">
+                    <ul class="newbox_ul listbox" id="listbox">
+                       <!--MyPage-->
+                        <li>
+                            <div class="fl newfl">
+                                <div class="newfl_day">@day@</div>
+                                <div class="newfl_tiem">@year@.@month@</div>
+                            </div>
+                            <div class="fr newfr">
+                                <p><a href="/knowledge/@id@.html" class="news_title">@Title@</a></p>
+                                <p class="news_cont">@Daodu2@</p>
+                                <a href="/knowledge/@id@.html" class="news_findbtn">查看详细>></a>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </li>
+                           <!--/MyPage-->   
+                    </ul>
+                    <div class="clearfloat"></div>
+                    <div class="fenye">@pagecontentinfo@</div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+     <!--include-->Foot.html<!--/include-->
+    </div>
+</body>
+</html>

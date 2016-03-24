@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+     <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+        <!--include-->Top.html<!--/include-->
+    </div>
+    <!--List table="banner" typeid="90"  where="islock=1" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+    <!--/List-->   
+    <div class="content">
+        <div class="title_cent">
+            <img src="/en/Images/t_3.jpg" alt=""/>
+        </div>
+        <div class="title_box">
+        <!--List table="channer" typeid="5"  order="sortid asc,id asc"-->
+            <a href="/@WebPath@/index@id@.html" id="ch-@id@" class="title_a">@Title@</a>
+        <!--/List-->
+            <script type="text/javascript">
+                 $("#ch-@ChannerId@").addClass("title_a title_a_select");
+            </script>
+        </div>
+    </div>
+    <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="">
+                <p class="content_title content_title1">@ChannerTitle@</p>
+                <div class="newbox">
+                    <ul class="newbox_ul">
+                        <!--MyPage-->
+                        <li>
+                            <div class="fl newfl">
+                                <div class="newfl_day">@day@</div>
+                                <div class="newfl_tiem">@year@.@month@</div>
+                            </div>
+                            <div class="fr newfr">
+                                <p><a href="/en/News/@id@.html" class="news_title">@Title@</a></p>
+                                <p class="news_cont">@Daodu2@</p>
+                                <a href="/en/News/@id@.html" class="news_findbtn">Read>></a>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </li>
+                         <!--/MyPage-->   
+                    </ul>
+                    <div class="clearfloat"></div>
+                   <div class="fenye">@pagecontentinfo@</div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <!--include-->Foot.html<!--/include-->
+    </div>
+      <script type="text/javascript">
+          $("#top5").addClass("select");
+    </script>
+</body>
+</html>

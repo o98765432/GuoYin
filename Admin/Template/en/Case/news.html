@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+         <!--include-->Top.html<!--/include-->
+    </div>
+
+   <!--List table="banner" typeid="89"  where="islock=1" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+    <!--/List-->  
+    <div class="content">
+        <div class="title_cent">
+            <img src="/en/Images/t_6.jpg" alt=""/>
+        </div>
+        <div class="business_title1">
+            <span class="business_titlebox"><em></em><span>@ChannerTitle@</span><em></em></span>
+        </div>
+    </div>
+    <div class="cont_box_bg">
+        <div class="content ">
+
+            <div class="">
+                <p class="gypz_cgan_title">@Title@</p>
+                @ContentInfo@
+                <div class="gypz_cgan_paddingtop50">
+                    <p class="testcss1 news_history"><a href="/en/Case/index.html">
+                        <img src="/en/Images/t8.jpg" alt="" /></a></p>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="content gypz_p gypz_cbox">
+
+               <!--ChildList table="news" typeid="@ChannerId@" num="1" order="Id asc"  where="id!=@id@ and id!<@id@" -->
+              <p>Prev：<a href="@Child-htmlpath@">@Child-Title@</a></p>
+               <!--/ChildList-->
+
+               <!--ChildList table="news" typeid="@ChannerId@" num="1" order="Id desc"  where="id<@id@" -->
+                   <p>Next：<a href="@Child-htmlpath@">@Child-Title@</a></p>
+               <!--/ChildList--> 
+
+            <div class="gypz_cgan_boxabsolute">
+                <span class="gypz_cgan_icon"></span>
+                <div class="gypz_cgan_frlist">
+                    <ul class="gypz_cgan_frlistul ">
+                      <!--ChildList table="news" typeid="@ChannerId@"   order="sortid asc,id desc"-->
+                        <li><a href="/en/Case/@Child-id@.html">@Child-Title@</a></li>
+                      <!--/ChildList-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+      <!--include-->Foot.html<!--/include-->
+    </div>
+      <script type="text/javascript">
+          $("#top4").addClass("select");
+    </script>
+</body>
+</html>

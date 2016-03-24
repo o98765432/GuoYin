@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+      <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+         <!--include-->Top.html<!--/include-->
+    </div>
+    <!--List table="banner" typeid="1"  where="ClassId=17" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+     <!--/List-->   
+    <div class="content">
+        <div class="title_cent">
+            <img src="/Images/t_2.jpg" alt="" />
+        </div>
+        <div class="title_box">
+          <!--List table="channer" typeid="6"  order="sortid asc,id asc"-->
+            <a href="/@WebPath@/index.html" id="ch-@id@" class="title_a">@Title@</a>
+          <!--/List-->
+           <script type="text/javascript">
+               $("#ch-@ChannerId@").addClass("title_a title_a_select");
+           </script>
+        </div>
+    </div>
+    <div class="cont_box_bg">
+        <div class="content">
+            <div class="divmarginauto divwidth932">
+            <p class="content_title content_title1">人才战略</p>
+                 @ContentInfo@
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+    <!--include-->Foot.html<!--/include-->
+    </div>
+     <script type="text/javascript">
+         $("#top6").addClass("select");
+    </script>
+</body>
+</html>

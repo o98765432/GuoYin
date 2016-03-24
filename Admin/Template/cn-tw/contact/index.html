@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+       <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+        <!--include-->Top.html<!--/include-->
+    </div>
+     <!--List table="banner" typeid="100"  where="islock=1" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+     <!--/List-->   
+    <div class="content">
+        <div class="title_cent">
+            <img src="/en/Images/t_5.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="">
+                <p class="content_title">@Title@</p>
+                <div class="contact_us">
+                     @ContentInfo@
+                </div>
+                <div class="clearfloat"></div>
+                <br /><br />
+                <div class="mapsbox">
+                <iframe src="/Admin/Template/contact/map.html" width="900px" height="547px"></iframe>
+                </div>
+                <br /><br />
+                <p class="onlinemsg">Leave us a message</p>
+                <p class="onlinemsg_pro">Dear Sir/Ms, you may leave a message here and we will give you a reply as soon as possible. Thank you!</p>
+                <form id="BMInfo">
+                <div>
+                    <div class="onlinemgs_textarea">
+                        <textarea class="" id="Details" name="Details"></textarea>
+                    </div>
+                </div>
+                <div class="onlinemgs_input">
+                    <div class="fl onlinemgs_inputbox onlinemgs_inputbg1">
+                        <div class="onlinemgs_inputpadding">
+                            <input type="text" id="name" name="name" />
+                        </div>
+                    </div>
+                    <div class="fl onlinemgs_inputbox onlinemgs_inputbg2">
+                        <div class="onlinemgs_inputpadding">
+                            <input type="text" id="tel" name="tel"/>
+                        </div>
+                    </div>
+                    <div class="fl onlinemgs_inputbox onlinemgs_inputbg4">
+                        <div class="onlinemgs_inputpadding">
+                            <input type="text" id="email" name="email"/>
+                        </div>
+                    </div>
+                    <!--<div class="fl onlinemgs_inputbox onlinemgs_inputbg3">
+                        <div class="onlinemgs_inputpadding">
+                            <input type="text" id="checkcode" name="checkcode" />
+                        </div>
+                    </div>
+                    <div class="fr flonlinemgs_inputbg3">
+                       <a href="javascript:" onclick="changecode()"><img src="/admin/checkCode.aspx" onclick="changecode()"  width="75px" height="40px" id="checkimg" alt=""/></a>
+                    </div>-->
+                    <div class="clearfloat"></div>
+                </div>
+                   
+                <div class="">
+                    <div class="fl onlinemgs_inputbox onlinemgs_inputbg1 onlinemgs_bgnone">
+                        <!--提示：您的姓名-->
+                    </div>
+                    <div class="fl onlinemgs_inputbox onlinemgs_inputbg2 onlinemgs_bgnone">
+                        <!--提示：您的电话-->
+                    </div>
+                    <div class="fl onlinemgs_inputbox onlinemgs_inputbg4 onlinemgs_bgnone">
+                       <!--提示：您的邮箱-->
+                    </div>
+                    <div class="clearfloat"></div>
+                </div>
+                <div class="clearfloat"></div>
+                <div class="online_consultantfl_btnbox onlinemgs_button">
+                    <input type="submit" class="online_consultantfl_submit"  value="Submit" />
+                    <input type="reset" class="online_consultantfl_submit online_consultantfl_button" value="Reset" />
+                </div>
+                </form>	
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+     <!--include-->Foot.html<!--/include-->
+    </div>
+    <script src="/en/webjs/AddInfo.js" type="text/javascript"></script>
+</body>
+</html>

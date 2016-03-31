@@ -1,46 +1,290 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-     <!--include-->Css.html<!--/include-->
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="公司動態" />
+<meta name="Description" content="" />
+<title>公司動態</title>
+<link href="/webcss/global.css" rel="stylesheet" type="text/css" />
+<link href="/webcss/layout.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+<script src="/webjs/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="/webjs/layoutjs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            MovesOver();
+            PopEvent(); //弹窗
+            //PrimaryService(); //列表偶数css:listboxleft,基数css：listboxright
+            ListHoverTextColor(); //列表鼠标效果
+            BusinessTabButton(); //选项卡
+        });
+    </script>
+          
 </head>
 <body>
     <div id="top">
-        <!--include-->Top.html<!--/include-->
-    </div>
-    <!--List table="banner" typeid="88"  where="islock=1" order="sortid desc,id desc"-->
-    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
-    <!--/List-->   
-      <div class="content">
-        <div class="title_cent">
-            <img src="/en/Images/t_4.jpg" alt=""/>
-        </div>
-    </div>
-    
-    <div class="">
+        <!--head start-->
+    <div>
         <div class="content">
-            <p class="content_title content_title1 content_title_padding">Business</p>
-        </div>
-    </div>
-                <div class="">
-        <div class="">
-            <div class="">
-                <div class="listbox">
-                    <ul class="listbox_1 listbox" id="listbox_1">
-                        @MyPagehtml@
+            <div class="fl logopadding"><a href="/index.html"><img src="/Images/logo.jpg" alt="" width="251" height="58" /></a></div>
+            <div class="fl menu_box">
+                <div class="language">
+                    <div class="lg_box fr" id="lg_box" >
+                        <div class="lg_text" id="lg_text"><a href="/index.html">简体中文</a></div>
+                        <div class="lg_text" id="lg_text"><a href="/en">English</a></div>
+                    </div>
+                        <div class="headlinekbox fr">
+                            <span class="headlinek headlinekbg1"><a href="http://hlt.jikehd.com/topic/?#positon?#positon">租賃知識</a></span>
+                            <span>|</span>
+                            <span class="headlinek headlinekbg2"><a href="/cn-tw/contact/index.html">聯繫我們</a></span>
+                            <span>|</span>
+                            <span class="lg_boxicon"></span>
+                        </div>
+                        <div class="clearfloat"></div>
+                    </div>
+                <div class="clearfloat"></div>
+                                                                                                     
+                <div class="menu">
+                    <ul class="menu_ul">
+                        <li><a href="/cn-tw/index.html" id="top1">首頁</a></li>
+                        <li class="aboutusli" id="aboutusli">
+                            <a href="/cn-tw/about/index.html" id="top2">關於我們</a>
+                            <div class="about_us_nav">
+                                <div class="about_us_navbox1">
+                                    <div class="content">
+                                        
+                                        <div class="fl about_us_nav1">
+                                            <p class="about_us_navtitle">關於我們</p>
+                                            <p class="about_us_navimg">
+                                                <img src="/Images/t30.jpg" alt="" />
+                                            </p>
+                                        </div>
+                                        <div class="fl about_us_nav2">
+                                            國銀租賃是經中國銀監會批准設立的非銀行金融機構，註冊地位於深圳，註冊資本80億元。公司前身深圳租賃公司於1984年在深圳成立。2008年，國家開發銀行增資控股後將公司更名為國銀金融租賃有限公司。公司從成立至今已有30年的歷史，是國內歷史最悠久的金融租賃公司之一。
+                                        </div>
+                                           
+                                        <div class="fl about_us_nav3">
+                                            <ul class="about_us_navul">
+                                                <li class=""><a href="/cn-tw/about/index.html">公司簡介</a></li>
+                                                <li class=""><a href="/cn-tw/scope/index.html">經營範圍</a></li>
+                                                <li class=""><a href="/cn-tw/course/index.html">發展歷程</a></li>
+                                                <li class=""><a href="/cn-tw/advantage/index.html">競爭優勢</a></li>
+                                                <li class=""><a href="/cn-tw/chart/index.html">組織架構</a></li>
+                                                <li class=""><a href="/cn-tw/honor/index.html">主要榮譽</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfloat"></div>
+                                    </div>
+                                </div>
+                               <div class="clearfloat"></div>
+                            </div>
+                        </li>
+                        <li class="aboutusli">
+                            <a href="/cn-tw/Yewu/index.html" id="top3" >公司業務</a>
+                            <div class="about_us_nav">
+                                <div class="about_us_navbox1">
+                                    <div class="content">
+                                     
+                                        <div class="fl about_us_nav1">
+                                            <p class="about_us_navtitle">業務介紹</p>
+                                            <p class="about_us_navimg">
+                                                <img src="/Images/b_4_1.jpg" alt="" />
+                                            </p>
+                                        </div>
+                                        <div class="fl about_us_nav2">
+                                        國銀租賃是經中國銀監會批准設立的非銀行金融機構，註冊地位於深圳，註冊資本80億元。公司前身深圳租賃公司於1984年在深圳成立。2008年，國家開發銀行增資控股後將公司更名為國銀金融租賃有限公司。公司從成立至今已有30年的歷史，是國內歷史最悠久的金融租賃公司之一。
+                                        </div>
+                                         
+                                        <p class="menu_nbsp"></p>
+                                        <div class="fl about_us_nav3">
+                                            <ul class="about_us_navul">
+                                                <li class=""><a href="/cn-tw/fjyewu/index.html">飛機租賃</a></li>
+                                                <li class=""><a href="/cn-tw/jcyewu/index.html">基礎設施租賃</a></li>
+                                                <li class=""><a href="/cn-tw/cbyewu/index.html">船舶、商用車和工程機械租賃</a></li>
+                                                <li class=""><a href="/cn-tw/qtyewu/index.html">其他租賃業務</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfloat"></div>
+                                    </div>   
+                                </div>
+                               <div class="clearfloat"></div>
+                            </div>
+                        </li>
+                        <li class="aboutusli">
+                            <a href="/cn-tw/News/index18.html" id="top5">新聞動態</a>
+                            <div class="about_us_nav">
+                                <div class="about_us_navbox1">
+                                    <div class="content">
+                                    
+                                        <div class="fl about_us_nav1">
+                                            <p class="about_us_navtitle">新聞動態</p>
+                                            <p class="about_us_navimg">
+                                                <img src="/Images/t32.jpg" alt="" />
+                                            </p>
+                                        </div>
+                                        <div class="fl about_us_nav2">
+                                            國銀租賃是經中國銀監會批准設立的非銀行金融機構，註冊地位於深圳，註冊資本80億元。公司前身深圳租賃公司於1984年在深圳成立。2008年，國家開發銀行增資控股後將公司更名為國銀金融租賃有限公司。公司從成立至今已有30年的歷史，是國內歷史最悠久的金融租賃公司。
+                                        </div>
+                                          
+                                        <div class="fl about_us_nav3">
+                                            <ul class="about_us_navul">
+                                                <li class=""><a href="/cn-tw/News/index18.html">公司動態</a></li>
+                                                <li class=""><a href="/cn-tw/News/index19.html">集團動態</a></li>
+                                                <li class=""><a href="/cn-tw/News/index47.html">行業資訊</a></li>
+                                                <li class=""><a href="/cn-tw/News/index48.html">媒體關注</a></li>
+                                                <li class=""><a href="/cn-tw/News/index49.html">政策法規</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfloat"></div>
+                                    </div>
+                                </div>
+                               <div class="clearfloat"></div>
+                            </div>
+                        </li>
+                        <li class="aboutusli">
+                            <a href="/cn-tw/Job/index.html" id="top6" >人力資源</a>
+                            <div class="about_us_nav">
+                                <div class="about_us_navbox1">
+                                 
+                                    <div class="content">
+                                        <div class="fl about_us_nav1">
+                                            <p class="about_us_navtitle">人力資源</p>
+                                            <p class="about_us_navimg">
+                                                <img src="/Images/t31.jpg" alt="" />
+                                            </p>
+                                        </div>
+                                        <div class="fl about_us_nav2">
+                                             我們與員工一起分享成功，提供良好的工作環境和待遇。我們關注員工個人的職業發展，願意付出時間和精力與他們一起尋找合適的位置。我們真誠期待員工在其合適的位置上，完美髮揮自己的天賦，對工作保持長久的熱情。
+                                        </div>
+                                       
+                                        <div class="fl about_us_nav3">
+                                            <ul class="about_us_navul">
+                                                <li class=""><a href="/cn-tw/ZhanLve/index.html">人才戰略</a></li>
+                                                <li class=""><a href="/cn-tw/Job/index.html">人才招聘</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="clearfloat"></div>
+                                    </div>
+                                </div>
+                               <div class="clearfloat"></div>
+                            </div>
+                        </li>
                     </ul>
                     <div class="clearfloat"></div>
+                </div>
+                <div class="clearfloat"></div>
+
+            </div>
+            <div class="clearfloat"></div>
+        </div>
+    </div>
+    <!--head end-->
+
+    <script type="text/javascript">
+        $(function () {
+            Lg(); //头部语言选择
+            MenuAboutUs(); //关于我们二级菜单
+        });
+    </script>
+    </div>
+       
+    <div class="content">
+        <div class="title_cent">
+            <img src="/en/Images/t_3.jpg" alt=""/>
+        </div>
+        <div class="title_box">
+        
+            <script type="text/javascript">
+                 $("#ch-85").addClass("title_a title_a_select");
+            </script>
+        </div>
+    </div>
+    <div class="cont_box_bg">
+        <div class="content">
+
+            <div class="">
+                <p class="content_title content_title1">公司動態</p>
+                <div class="newbox">
+                    <ul class="newbox_ul">
+                        
+                        <li>
+                            <div class="fl newfl">
+                                <div class="newfl_day">10</div>
+                                <div class="newfl_tiem">2016.03</div>
+                            </div>
+                            <div class="fr newfr">
+                                <p><a href="/en/News/472.html" class="news_title">全國人大代表王學東：加快推進「港深國際金融中心」建設</a></p>
+                                <p class="news_cont"></p>
+                                <a href="/en/News/472.html" class="news_findbtn">Read>></a>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </li>
+                         
+                        <li>
+                            <div class="fl newfl">
+                                <div class="newfl_day">26</div>
+                                <div class="newfl_tiem">2016.02</div>
+                            </div>
+                            <div class="fr newfr">
+                                <p><a href="/en/News/471.html" class="news_title">國銀租賃首架波音訂單飛機交付東航運營</a></p>
+                                <p class="news_cont"></p>
+                                <a href="/en/News/471.html" class="news_findbtn">Read>></a>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </li>
+                         
+                        <li>
+                            <div class="fl newfl">
+                                <div class="newfl_day">01</div>
+                                <div class="newfl_tiem">2016.01</div>
+                            </div>
+                            <div class="fr newfr">
+                                <p><a href="/en/News/470.html" class="news_title">黨委書記、董事長王學東向國銀租賃員工緻新年賀詞</a></p>
+                                <p class="news_cont"></p>
+                                <a href="/en/News/470.html" class="news_findbtn">Read>></a>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </li>
+                         
+                        <li>
+                            <div class="fl newfl">
+                                <div class="newfl_day">31</div>
+                                <div class="newfl_tiem">2015.12</div>
+                            </div>
+                            <div class="fr newfr">
+                                <p><a href="/en/News/469.html" class="news_title">元旦春節期間違反中央八項規定精神問題監督舉報曝光專區</a></p>
+                                <p class="news_cont"></p>
+                                <a href="/en/News/469.html" class="news_findbtn">Read>></a>
+                            </div>
+                            <div class="clearfloat"></div>
+                        </li>
+                            
+                    </ul>
+                    <div class="clearfloat"></div>
+                   <div class="fenye"><div class="changepage1"><a href="javascript:void" class="changel"><img src="/webimages/arrowl.gif" /></a><a href="index85.html"  class="num cur "  >1</a><a href="index85_page_1.html"  class="num  "  >2</a><a href="index85_page_2.html"  class="num  "  >3</a><a href="index85_page_3.html"  class="num  "  >4</a><a href="index85_page_4.html"  class="num  "  >5</a><a href="index85_page_5.html"  class="num  "  >6</a><a href="index85_page_6.html"  class="num  "  >7</a><a href="index85_page_7.html"  class="num  "  >8</a><a href="index85_page_8.html"  class="num  "  >9</a><a href="index85_page_9.html"  class="num  "  >10</a><a href="index85_page_13.html" class="num">...</a><a href="index85_page_13.html" class="num">14</a><a href="index85_page_1.html" class="changer"><img src="/webimages/arrowr.gif" /></a></div></div>
                 </div>
                 <div class="clearfloat"></div>
             </div>
 
         </div>
-
     </div>
     <div class="footer" id="footer">
-    <!--include-->Foot.html<!--/include-->
+     <div class="footer">
+        <div class="content footerbox">
+            <div class="footerfl">
+                <a href="/cn-tw/Job/index.html">人才招聘</a><span>|</span>
+                <a href="/cn-tw/contact/index.html">聯繫我們</a>
+            </div>
+            <div class="footerfr"><span>2014 國銀金融租賃有限公司</span> <span>|</span> <a href="http://www.szweb.cn/" target="_blank" style="color:#fff">深圳網站建設</a> ：<a href="http://www.szweb.cn/" target="_blank" style="color:#fff">沙漠風</a></div>
+        </div>
     </div>
     <script type="text/javascript">
-        $("#top3").addClass("select");
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F484b118a05bf5c7901e3aed661b2f2b2' type='text/javascript'%3E%3C/script%3E"));
+</script>
+    </div>
+      <script type="text/javascript">
+          $("#top5").addClass("select");
     </script>
 </body>
 </html>

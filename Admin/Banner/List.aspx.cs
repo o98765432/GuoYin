@@ -82,10 +82,10 @@ namespace DtCms.Web.Admin.Banner
                 this.lbtnDel.Visible = deleteflag;
 
 
-                if (classId!=12)
-                {
-                    this.Button2.Visible = false;
-                }
+                //if (classId!=12)
+                //{
+                //    this.Button2.Visible = false;
+                //}
 
          
                 ChannelTreeBind(this.classId, channelmodel.Title, (int)Channel.Article, this.ddlClassId, ver);

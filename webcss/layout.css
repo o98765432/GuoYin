@@ -9,7 +9,10 @@
 .lg_box{position:relative;float:right;height:22px;line-height:22px;}
 .lg_ul{height:0px;overflow:hidden;width:100%;position:absolute;top:18px;left:0px;width:60px;background-color:#fff;z-index:99;}
 .lg_ul li{cursor:pointer;padding:3px 0;}
-.lg_text{cursor:pointer;background:url("../Images/incon1.jpg") 100% 50% no-repeat;padding-right:10px;}
+/*.lg_text{cursor:pointer;background:url("../Images/incon1.jpg") 100% 50% no-repeat;padding-right:10px;}*/
+.lg_text{cursor:pointer;padding-right:10px;}
+.lg_text span{display:inline-block;margin:0 3px}
+.lg_text a{display:inline-block;margin:0 3px;}
 /*.headlinek{display:inline-block;padding:0 0 0 17px;}*/
 /*.headlinek a,.lg_text,.lg_ul li{color:#999;}*/
 

@@ -251,7 +251,7 @@
                 <asp:TextBox ID="txtSmallTitle" runat="server" CssClass="input w380 left"></asp:TextBox>
             </td>
         </tr>
-        <tr <%if(classid != 51&&classid!=93){%> style="display: none"<%} %>>
+        <tr <%if(classid != 51&&classid!=93&&classid!=108){%> style="display: none"<%} %>>
             <td align="right" valign="top">
                 描述：
             </td>
@@ -260,7 +260,7 @@
                     visibility: hidden;" runat="server"></textarea>
             </td>
         </tr>
-        <tr <%if (classid != 27){ %>style="display: none"<%}%>>
+        <tr <%if (classid != 27&&classid!=107){ %>style="display: none"<%}%>>
             <td align="right" valign="top">
                 添加连接：
             </td>

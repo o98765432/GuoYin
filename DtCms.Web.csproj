@@ -720,6 +720,31 @@
     <Content Include="flash\player.swf" />
     <Content Include="flash\V_close.png" />
     <Content Include="Search\index.html" />
+    <Content Include="specialtopic\css\base.css" />
+    <Content Include="specialtopic\css\common.css" />
+    <Content Include="specialtopic\css\layout.css" />
+    <Content Include="specialtopic\css\reset.css" />
+    <Content Include="specialtopic\images\3_img1.jpg" />
+    <Content Include="specialtopic\images\3_img2.jpg" />
+    <Content Include="specialtopic\images\3_img3.jpg" />
+    <Content Include="specialtopic\images\ha.jpg" />
+    <Content Include="specialtopic\images\hahah.jpg" />
+    <Content Include="specialtopic\images\hahah_2.jpg" />
+    <Content Include="specialtopic\images\ha_hover.jpg" />
+    <Content Include="specialtopic\images\icon_bg2.jpg" />
+    <Content Include="specialtopic\images\icon_bg2_hover.jpg" />
+    <Content Include="specialtopic\images\icon_img.jpg" />
+    <Content Include="specialtopic\images\icon_img2.jpg" />
+    <Content Include="specialtopic\images\icon_img2_2.jpg" />
+    <Content Include="specialtopic\images\img2.jpg" />
+    <Content Include="specialtopic\images\img3.jpg" />
+    <Content Include="specialtopic\images\img4.jpg" />
+    <Content Include="specialtopic\images\img5.jpg" />
+    <Content Include="specialtopic\images\img_bang.jpg" />
+    <Content Include="specialtopic\images\return_top.png" />
+    <Content Include="specialtopic\index.html" />
+    <Content Include="specialtopic\js\jquery-1.js" />
+    <Content Include="specialtopic\js\jquery.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

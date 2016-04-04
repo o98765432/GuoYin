@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <!--include-->Css.html<!--/include-->
+</head>
+<body>
+    <div id="top">
+         <!--include-->Top.html<!--/include-->
+    </div>
+
+   <!--List table="banner" typeid="1"  where="ClassId=14" order="sortid desc,id desc"-->
+    <div class="bannerbox"><img src="@ImgUrl@" alt="" width="100%" /></div>
+    <!--/List-->  
+     <div class="content">
+        <div class="title_cent">
+            <img src="/Images/t_4.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="">
+        <div class="content">
+            <div class="divwidth978">
+                <div class="business_title1">
+                    <span class="business_titlebox"><em></em><span>@ChannerTitle@</span><em></em></span>
+                </div>
+
+                <p class="business_baner"><img src="@ChannerImgUrl@" alt="" width="978" height="214" /></p>
+                <div class="business_tab" id="business_tab_button">
+                   
+
+
+                    <div class="content">
+
+                        <div id="tab_cx">
+                            <ul id="gsyw_tabul1" style="float:none;">    
+                                <!--MyPage-->
+                                <li style="display:inline-block;margin-left:-2px;margin-right:-2px;">
+                                    <span><a href="javascript:">@Title@</a></span>
+                                </li>                
+                                <!--/MyPage-->  
+                            </ul>
+                            <div class="clearfloat"></div>
+                        </div>
+
+                        </div>
+
+
+
+                    </div>
+
+            </div>
+
+        </div>
+        <div class="cont_box_bg1">
+            <div class="content">
+                <!--List table="news" where="ClassId=56" order="sortid desc,id desc"-->
+                <div class="business_tab_box">
+                    <div style="line-height:1.9">
+                        <p class="txtlineheight">
+                            @ContentInfo@
+                        </p>
+                    </div>
+                </div>
+                <!--/List-->  
+                
+            
+                 <p class="testcss1 news_history"><a href="/Yewu/index.html"><img src="/Images/t8.jpg" alt=""/></a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+      <!--include-->Foot.html<!--/include-->
+
+        <script type="text/javascript">
+            function MovesOver() {
+                var gypztabbox = $(".business_tab_box");
+                var gypztabcont1 = gypztabbox.eq(0).find(".gypz_tab_cont1");
+                gypztabcont1.css({ "margin-top": -(gypztabcont1.outerHeight() / 2) });
+                $(document).delegate("#gsyw_tabul1 li", "hover", function (e) {
+                    var curevent = $("#gsyw_tabul1 li");
+                    var gypztabbox = $(".business_tab_box");
+                    var curindex = $(this).index();
+                    var gypztabcont1 = gypztabbox.eq(curindex).find(".gypz_tab_cont1");
+                    if (e.type == "mouseleave") {//离开
+                        //$(this).removeClass("select");
+                    }
+                    if (e.type == "mouseenter") {//
+                        curevent.removeClass("select");
+                        $(this).addClass("select");
+                        gypztabbox.hide().eq(curindex).show();
+                        gypztabcont1.css({ "margin-top": -(gypztabcont1.outerHeight() / 2) });
+                    }
+
+                }); $("#gsyw_tabul1 li:eq(0)").addClass("select");
+            }
+
+
+        $(".business_tab_box").eq(0).addClass("business_tab_box block");
+        $("#gsyw_tabul1").addClass("select");
+        </script>
+    </div>
+</body>
+</html>

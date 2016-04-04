@@ -87,9 +87,9 @@
             <td align="right">上传文件：</td>
             <td>
                 <asp:TextBox ID="txtFilePath" runat="server" CssClass="input w380 left"></asp:TextBox>
-                <a href="javascript:void(0);" class="files filesbg2"><input type="file" id="FileUpload2" name="FileUpload2" onchange="SingleUpload('txtFilePath','FileUpload2')" /></a>
+                <a href="javascript:void(0);" class="files filesbg2"><input type="file" id="FileUpload2" name="FileUpload2" onchange="UploadFile('txtFilePath','FileUpload2')" /></a>
                 <span class="uploading">正在上传，请稍候...</span>
-                <span><a href="<%=filepath %>">查看</a></span>
+                <span style="display:none"><a href="<%=filepath %>">查看</a></span>
             </td>
         </tr>
        

@@ -221,3 +221,42 @@ function SingleUpload2(repath, uppath, iswater) {
     });
 };
 //===========================上传文件JS函数结束================================
+
+
+//================上传文件JS函数开始，需和jquery.form.js一起使用===============
+//单个文件上传
+function UploadFile(repath, uppath, iswater) {
+
+    var submitUrl = "../../Tools/UploadFile.ashx?ReFilePath=" + repath + "&UpFilePath=" + uppath;
+    //判断是否打水印
+    if (arguments.length == 3) {
+        submitUrl = "../../Tools/UploadFile.ashx?ReFilePath=" + repath + "&UpFilePath=" + uppath + "&IsWater=" + iswater;
+    }
+    //开始提交
+    $("#form1").ajaxSubmit({
+        beforeSubmit: function (formData, jqForm, options) {
+            //隐藏上传按钮
+            $("#" + repath).nextAll(".files").eq(0).hide();
+            //显示LOADING图片
+            $("#" + repath).nextAll(".uploading").eq(0).show();
+        },
+        success: function (data, textStatus) {
+            $("#" + repath).val(data.FileName);
+            $("#" + repath).nextAll(".files").eq(0).show();
+            $("#" + repath).nextAll(".uploading").eq(0).hide();
+        },
+        error: function (data, status, e) {
+
+            alert("上传失败，错误信息：" + e);
+            $("#" + repath).nextAll(".files").eq(0).show();
+            $("#" + repath).nextAll(".uploading").eq(0).hide();
+        },
+        url: submitUrl,
+        type: "post",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        secureuri: false,
+        timeout: 600000
+    });
+};
+//===========================上传文件JS函数结束================================

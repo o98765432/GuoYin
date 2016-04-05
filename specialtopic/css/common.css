@@ -1,0 +1,136 @@
+@media (min-width: 320px) {
+    html {
+        font-size: 100%; 
+    }
+}
+@media (min-width: 360px) {
+    html {
+        font-size: 112.5%;
+    }
+}
+@media (min-width: 384px) {
+    html {
+        font-size: 120%;
+    }
+}
+@media (min-width: 400px) {
+    html {
+        font-size: 125%;
+    }
+}
+@media (min-width: 540px) {
+    html {
+        font-size: 168.75%;
+    }
+}
+@media (min-width: 600px) {
+    html {
+        font-size: 187.5%;
+    }
+}
+@media (min-width: 640px) {
+    html {
+        font-size: 200%;
+    }
+}
+@media (min-width: 720px) {
+    html {
+        font-size: 225%;
+    }
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 100%;
+    }
+}
+
+*,
+*:before,
+*:after {
+   -moz-box-sizing: border-box;   /* Firefox 1, probably can drop this */
+   -webkit-box-sizing: border-box;   /* Safari 3-4, also probably droppable */
+    box-sizing: border-box;   /* Everything else */
+}
+
+.dib {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+/* 清除 inline-block 中换行的空格 */
+.clearspace {
+    font-size: 0;
+    word-spacing: -0.0625rem;
+}
+@supports (-webkit-appearance: none) and (not (-webkit-text-size-adjust: none)) {
+    .clearspace  {
+        word-spacing: normal;
+    }
+}
+@supports (-moz-appearance: none) {
+    .clearspace {
+        word-spacing: normal;
+    }
+}
+.clearspace > .dib {
+    font-size: 0.75rem;  
+    word-spacing: normal;
+    vertical-align: top;
+}
+
+/* 文字省略 */
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+a {
+    text-decoration: none;
+}
+a[href] {
+    color: inherit;
+}
+a > img {
+    vertical-align: top;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    outline: 0;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+body {
+    background: hsl(240, 3%, 93%);
+}
+
+hr.hr {
+    height: 0.125rem;
+    content: "";
+    display: block;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    background-image: -moz-linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsla(0, 0%, 100%, 0.75) 15%, hsla(0, 0%, 100%, 1) 50%, hsla(0, 0%, 100%, 1) 50%, hsla(0, 0%, 100%, 0.75) 85%, hsla(0, 0%, 100%, 0) 100%),
+                      -moz-linear-gradient(0deg, hsla(240, 5%, 83%, 0) 0%, hsla(240, 5%, 83%, 0.75) 15%, hsla(240, 5%, 83%, 1) 50%, hsla(240, 5%, 83%, 1) 50%, hsla(240, 5%, 83%, 0.75) 85%, hsla(240, 5%, 83%, 0) 100%);
+    background-image: -webkit-linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsla(0, 0%, 100%, 0.75) 15%, hsla(0, 0%, 100%, 1) 50%, hsla(0, 0%, 100%, 1) 50%, hsla(0, 0%, 100%, 0.75) 85%, hsla(0, 0%, 100%, 0) 100%),
+                      -webkit-linear-gradient(0deg, hsla(240, 5%, 83%, 0) 0%, hsla(240, 5%, 83%, 0.75) 15%, hsla(240, 5%, 83%, 1) 50%, hsla(240, 5%, 83%, 1) 50%, hsla(240, 5%, 83%, 0.75) 85%, hsla(240, 5%, 83%, 0) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(hsla(0, 0%, 100%, 0)), color-stop(0.15, hsla(0, 0%, 100%, 0.75)), color-stop(0.5, hsla(0, 0%, 100%, 1)), color-stop(0.5, hsla(0, 0%, 100%, 1)), color-stop(0.85, hsla(0, 0%, 100%, 0.75)), to(hsla(0, 0%, 100%, 0))),
+                      -webkit-gradient(linear, left top, right top, from(hsla(240, 5%, 83%, 0)), color-stop(0.15, hsla(240, 5%, 83%, 0.75)), color-stop(0.5, hsla(240, 5%, 83%, 1)), color-stop(0.5, hsla(240, 5%, 83%, 1)), color-stop(0.85, hsla(240, 5%, 83%, 0.75)), to(hsla(240, 5%, 83%, 0)));
+    background-image: linear-gradient(to right, hsla(0, 0%, 100%, 0) 0%, hsla(0, 0%, 100%, 0.75) 15%, hsla(0, 0%, 100%, 1) 50%, hsla(0, 0%, 100%, 1) 50%, hsla(0, 0%, 100%, 0.75) 85%, hsla(0, 0%, 100%, 0) 100%),
+                      linear-gradient(to right, hsla(240, 5%, 83%, 0) 0%, hsla(240, 5%, 83%, 0.75) 15%, hsla(240, 5%, 83%, 1) 50%, hsla(240, 5%, 83%, 1) 50%, hsla(240, 5%, 83%, 0.75) 85%, hsla(240, 5%, 83%, 0) 100%);
+    background-position: 0 0.0625rem, 0 -0.0625rem;
+    background-repeat: no-repeat;
+}
+
+.cls{clear:both; line-height:0px!important; height:0px!important;font-size:0px!important;} 
+html,div,ul,li,dl,dt,dd,p,h1,h2,h3,h4,h5,h6,img,form,embed,label{margin:0;padding:0;border:0;font-weight:normal;}
+

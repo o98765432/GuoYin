@@ -37,8 +37,8 @@ namespace DtCms.Web.Tools
             {
                 Directory.CreateDirectory(fileFullPath);
             }
-
-            HttpPostedFile upfile = context.Request.Files["Filedata"];
+            string _upfilepath = context.Request.QueryString["UpFilePath"];
+            HttpPostedFile upfile = context.Request.Files[_upfilepath];
             string ext = Path.GetExtension(upfile.FileName);
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmssff") + Path.GetExtension(upfile.FileName); //随机文件名
             upfile.SaveAs(fileFullPath + fileName);
@@ -52,9 +52,9 @@ namespace DtCms.Web.Tools
                 Directory.CreateDirectory(newsfileFullPath);
             }
 
-            upfile.SaveAs(newsfilePath + fileName);
+            upfile.SaveAs(newsfileFullPath + fileName);
 
-            DtCms.Common.ImageThumbnailMake.MakeThumbnail(newsfilePath + fileName, newsfilePath + fileName, 58, 45, "H");
+            //DtCms.Common.ImageThumbnailMake.MakeThumbnail(newsfileFullPath + fileName, newsfileFullPath + fileName, 58, 45, "H");
 
             string serverFileName = string.Concat(filePath.ToString(), fileName);
             JSONObject json = new JSONObject();

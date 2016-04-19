@@ -235,7 +235,7 @@ namespace DtCms.Web.Admin.Article
         protected void lbtnMakeHtml_Click(object sender, EventArgs e)
         {
 
-            CreateHtmlByWeb.ShowAllHtmlCreate.CreateHtmlNewsPage(classId);
+            CreateHtmlByWeb.ShowAllHtmlCreate.OtherLanguageCreateHtmlNewsPage(classId);
             Response.Write("<script type='text/javascript'>alert('生成成功');location.href='list.aspx?classid=" + this.classId + "'</script>");
             Response.End();
         }
@@ -333,7 +333,7 @@ namespace DtCms.Web.Admin.Article
             if (!string.IsNullOrEmpty(allid))
             {
 
-                CreateHtmlByWeb.ShowAllHtmlCreate.CreateNewsSinglePageByWeb(this.classId, allid);
+                CreateHtmlByWeb.ShowAllHtmlCreate.OtherLanguageCreateNewsSinglePageByWeb(this.classId, allid);
 
             }
 

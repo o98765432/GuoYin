@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DtCms.Common;
 using DtCms.Web.UI;
+using CreateHtmlByWeb;
 
 namespace DtCms.Web.Admin.Article
 {
@@ -235,13 +236,20 @@ namespace DtCms.Web.Admin.Article
         protected void lbtnMakeHtml_Click(object sender, EventArgs e)
         {
 
-            CreateHtmlByWeb.ShowAllHtmlCreate.OtherLanguageCreateHtmlNewsPage(classId);
+            CreateHtmlNewsPage(classId);
             Response.Write("<script type='text/javascript'>alert('生成成功');location.href='list.aspx?classid=" + this.classId + "'</script>");
             Response.End();
         }
 
+        public static void CreateHtmlNewsPage(int typeid)
+        {
 
+            //生成详细网页
 
+            CreateNewsSinglePageByWeb(typeid, "");
+            ShowAllHtmlCreate.CreateHtmlNewsList(typeid);
+
+        }
 
         #region " Property "
 
@@ -295,7 +303,7 @@ namespace DtCms.Web.Admin.Article
         protected void Button2_Click(object sender, EventArgs e)
         {
 
-            CreateHtmlByWeb.ShowAllHtmlCreate.CreateHtmlNewsList(classId);
+           ShowAllHtmlCreate.CreateHtmlNewsList(classId);
             Response.Write("<script type='text/javascript'>alert('生成成功');location.href='list.aspx?classid=" + this.classId + "'</script>");
             Response.End();
         }
@@ -333,7 +341,7 @@ namespace DtCms.Web.Admin.Article
             if (!string.IsNullOrEmpty(allid))
             {
 
-                CreateHtmlByWeb.ShowAllHtmlCreate.OtherLanguageCreateNewsSinglePageByWeb(this.classId, allid);
+                CreateNewsSinglePageByWeb(this.classId, allid);
 
             }
 
@@ -341,6 +349,222 @@ namespace DtCms.Web.Admin.Article
             Response.End();
         }
 
+        public static void CreateNewsSinglePageByWeb(int typeid, string allidinfo)
+        {
+
+
+            DtCms.Model.Channel channel = new DtCms.BLL.Channel().GetModel(typeid);
+
+            if (channel != null)
+            {
+
+                var showver= HttpContext.Current.Session["ver"] != null ? (HttpContext.Current.Session["ver"].ToString().Equals("cn") ? "" : (HttpContext.Current.Session["ver"].ToString()) + "/") : "";
+
+                string allid = new DtCms.BLL.Channel().returnAllStringTop(typeid, HttpContext.Current.Session["ver"].ToString());
+
+                string tempUrl = "/Admin/Template/" + showver + channel.WebPath + "/news.html";
+
+
+                string html = FileManager.ReadFile(HttpContext.Current.Server.MapPath(tempUrl));
+
+
+                html = ShowAllHtmlCreate.returnAllProductInfo(html, "1,2,3,4,5");
+
+                html = new TemplateHtm().ReplaceListTag(html);
+
+
+                string strwhere = "  IsLock=1 and ver='" + HttpContext.Current.Session["ver"].ToString() + "' and ClassId in(" + new DtCms.BLL.Channel().returnAllStringTop(typeid, HttpContext.Current.Session["ver"].ToString()) + ")";
+
+
+                if (!string.IsNullOrEmpty(allidinfo))
+                {
+
+                    strwhere = "  IsLock=1  and id in(" + allidinfo + ") ";
+
+                }
+                if (html == null)
+                {
+                    return;
+                }
+
+                DataSet ds = new DtCms.BLL.Article().GetList(strwhere);
+
+
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+
+                    string showver1 = HttpContext.Current.Session["ver"] != null ? (HttpContext.Current.Session["ver"].ToString().Equals("cn") ? "" : (HttpContext.Current.Session["ver"].ToString())) : "";
+
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        string htmlpath = "/" + showver1 + "/" + channel.WebPath + "/" + ds.Tables[0].Rows[i]["id"] + ".html";
+
+                        if (ds.Tables[0].Rows[i]["htmlpath"] != null && (!string.IsNullOrEmpty(ds.Tables[0].Rows[i]["htmlpath"].ToString())))
+                        {
+
+                            var classID = ds.Tables[0].Rows[i]["ClassId"].ToString();
+                            if (classID == "85" || classID == "86" || classID == "87" || classID == "88" || classID == "89")
+                            {
+                                htmlpath = ds.Tables[0].Rows[i]["htmlpath"].ToString();
+                            }
+                            else
+                            {
+                                htmlpath = "/" + showver1 + ds.Tables[0].Rows[i]["htmlpath"].ToString();
+                            }
+
+                        }
+                        else
+                        {
+
+                            if (!Directory.Exists(HttpContext.Current.Server.MapPath("~" + channel.WebPath)))
+                            {
+                                Directory.CreateDirectory(HttpContext.Current.Server.MapPath("~/" + channel.WebPath));
+                            }
+
+                            htmlpath = "/" + showver1 + "/" + channel.WebPath + "/" + ds.Tables[0].Rows[i]["id"] + ".html";
+
+
+                            new DtCms.BLL.Article().UpdateField(Convert.ToInt32(ds.Tables[0].Rows[i]["id"]), " htmlpath='" + htmlpath + "'");
+
+                        }
+
+
+                        string newshtml = html;
+
+
+
+                        DtCms.Model.Channel channerl = new DtCms.BLL.Channel().GetModel(Convert.ToInt32(ds.Tables[0].Rows[i]["classid"]));
+
+                        if (channerl != null)
+                        {
+
+
+                            newshtml = newshtml.Replace("@ChannerTitle@", channerl.Title + "");
+
+                            newshtml = newshtml.Replace("@ChannerId@", channerl.Id + "");
+
+                            newshtml = newshtml.Replace("@ChannerImgUrl@", channerl.ImgUrl + "");
+
+                            DtCms.Model.Channel channerl2 = new DtCms.BLL.Channel().GetModel(channerl.ParentId);
+
+                            if (channerl2.ParentId != 0)
+                            {
+
+                                newshtml = newshtml.Replace("@ChannerPrTitle@", channerl2.Title);
+
+                                newshtml = newshtml.Replace("@ChannerPrId@", channerl2.Id + "");
+
+                            }
+                        }
+
+                        newshtml = newshtml.Replace("@ChannerTitle@", "");
+
+                        newshtml = newshtml.Replace("@ChannerId@", "");
+
+
+                        newshtml = newshtml.Replace("@ChannerPrTitle@", "");
+
+                        newshtml = newshtml.Replace("@ChannerPrId@", "");
+
+
+
+                        newshtml = newshtml.Replace("@Title@", ds.Tables[0].Rows[i]["Title"] != null ? ds.Tables[0].Rows[i]["Title"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@id@", ds.Tables[0].Rows[i]["id"] != null ? ds.Tables[0].Rows[i]["id"].ToString() : "");
+
+
+                        newshtml = newshtml.Replace("@ContentInfo@", ds.Tables[0].Rows[i]["content"] != null ? ds.Tables[0].Rows[i]["content"].ToString() : "");
+
+                        if (ds.Tables[0].Rows[i]["Keyword"] != null && !string.IsNullOrEmpty(ds.Tables[0].Rows[i]["Keyword"].ToString()))
+                        {
+
+                            newshtml = newshtml.Replace("@SeoKeyWords@", ds.Tables[0].Rows[i]["Keyword"] != null ? ds.Tables[0].Rows[i]["Keyword"].ToString() : "");
+
+                        }
+
+                        newshtml = newshtml.Replace("@ImgUrl@", ds.Tables[0].Rows[i]["ImgUrl"] != null ? ds.Tables[0].Rows[i]["ImgUrl"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@ImgUrl2@", ds.Tables[0].Rows[i]["BigImgUrl"] != null ? ds.Tables[0].Rows[i]["BigImgUrl"].ToString() : "");
+
+                        if (ds.Tables[0].Rows[i]["Description"] != null && !string.IsNullOrEmpty(ds.Tables[0].Rows[i]["Description"].ToString()))
+                        {
+
+
+                            newshtml = newshtml.Replace("@SeoDes@", ds.Tables[0].Rows[i]["Description"] != null ? ds.Tables[0].Rows[i]["Description"].ToString() : "");
+
+                        }
+                        newshtml = newshtml.Replace("@Herf@", ds.Tables[0].Rows[i]["Herf"] != null ? ds.Tables[0].Rows[i]["Herf"].ToString() : "");
+
+                        if (ds.Tables[0].Rows[i]["Form"] != null && !string.IsNullOrEmpty(ds.Tables[0].Rows[i]["Form"].ToString()))
+                        {
+
+
+                            newshtml = newshtml.Replace("@SeoTitle@", ds.Tables[0].Rows[i]["Form"] != null ? ds.Tables[0].Rows[i]["Form"].ToString() : "");
+
+                        }
+
+                        newshtml = newshtml.Replace("@AddTime@", ds.Tables[0].Rows[i]["AddTime"] != null ? DateTime.Parse(ds.Tables[0].Rows[i]["AddTime"].ToString()).ToString("yyyy-MM-dd") : "");
+
+                        newshtml = newshtml.Replace("@filepath@", ds.Tables[0].Rows[i]["filepath"] != null ? ds.Tables[0].Rows[i]["filepath"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@Download@", ds.Tables[0].Rows[i]["Download"] != null ? ds.Tables[0].Rows[i]["Download"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@Form@", ds.Tables[0].Rows[i]["IndexImgUrl"] != null ? ds.Tables[0].Rows[i]["IndexImgUrl"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@SubTitle@", ds.Tables[0].Rows[i]["SubTitle"] != null ? ds.Tables[0].Rows[i]["SubTitle"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@htmlpath@", ds.Tables[0].Rows[i]["htmlpath"] != null ? ds.Tables[0].Rows[i]["htmlpath"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@Daodu@", ds.Tables[0].Rows[i]["Daodu"] != null ? ds.Tables[0].Rows[i]["Daodu"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@Author@", ds.Tables[0].Rows[i]["Author"] != null ? ds.Tables[0].Rows[i]["Author"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@UpdateTime@", ds.Tables[0].Rows[i]["AddTime"] != null ? (ShowAllHtmlCreate.returnEnDate(DateTime.Parse(ds.Tables[0].Rows[i]["AddTime"].ToString()).ToString("yyyy.MM"))) : "");
+
+                        newshtml = newshtml.Replace("@ContentInfo2@", ds.Tables[0].Rows[i]["content"].ToString() != null ? DtCms.Common.Utils.CutString(ds.Tables[0].Rows[i]["content"].ToString(), 400) : "");
+
+                        newshtml = newshtml.Replace("@IndexImgUrl@", ds.Tables[0].Rows[i]["IndexImgUrl"] != null ? ds.Tables[0].Rows[i]["IndexImgUrl"].ToString() : "");
+
+                        newshtml = newshtml.Replace("@ImgUrl5@", ds.Tables[0].Rows[i]["ImgUrl5"] != null ? ds.Tables[0].Rows[i]["ImgUrl5"].ToString() : "");
+
+
+                        if (ds.Tables[0].Rows[i]["Editor"] != null)
+                        {
+
+                            string allimg = "";
+
+                            string[] txtimg = ds.Tables[0].Rows[i]["Editor"].ToString().Split(',');
+
+                            foreach (string imginfo in txtimg)
+                            {
+
+                                allimg += "<li><img  src=\"/minimg" + imginfo + "\" title=\"" + ds.Tables[0].Rows[i]["Title"] + "\" rel=\"" + imginfo + "\"/></li> ";
+
+                            }
+                            newshtml = newshtml.Replace("@allimg@", allimg);
+
+                        }
+
+
+
+                        for (int g = 0; g < ds.Tables[0].Columns.Count; g++)
+                        {
+
+
+                            newshtml = newshtml.Replace("@" + ds.Tables[0].Columns[g] + "@", ds.Tables[0].Rows[i]["" + ds.Tables[0].Columns[g] + ""] != null ? ds.Tables[0].Rows[i]["" + ds.Tables[0].Columns[g] + ""].ToString() : "");
+
+
+                        }
+
+                        FileManager.WriteFile(HttpContext.Current.Server.MapPath("~" + htmlpath), newshtml);
+
+                    }
+
+                }
+
+            }
+
+        }
 
     }
 }

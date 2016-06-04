@@ -742,6 +742,7 @@
     <Content Include="specialtopic\index.html" />
     <Content Include="specialtopic\js\jquery-1.js" />
     <Content Include="specialtopic\js\jquery.js" />
+    <Content Include="StockInformation.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1549,6 +1550,13 @@
     </Compile>
     <Compile Include="ShowPageCountShow.ashx.cs">
       <DependentUpon>ShowPageCountShow.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="StockInformation.aspx.cs">
+      <DependentUpon>StockInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StockInformation.aspx.designer.cs">
+      <DependentUpon>StockInformation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tools\AddComplain.ashx.cs">
       <DependentUpon>AddComplain.ashx</DependentUpon>

@@ -46,10 +46,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CreateHtmlByWeb, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\CreateHtmlByWeb.dll</HintPath>
-    </Reference>
     <Reference Include="DtCms.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\bin\DtCms.BLL.dll</HintPath>
@@ -2145,6 +2141,12 @@
     <Folder Include="UpLoadFiles\" />
     <Folder Include="webimages\images\" />
     <Folder Include="webimage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="E:\CreateHtmlByWeb\CreateHtmlByWeb.csproj">
+      <Project>{5fe8527a-f2c7-47de-a21a-eda11263637f}</Project>
+      <Name>CreateHtmlByWeb</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

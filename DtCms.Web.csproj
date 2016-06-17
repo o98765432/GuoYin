@@ -321,6 +321,8 @@
     <Content Include="checkCode.aspx" />
     <Content Include="css\layout.css" />
     <Content Include="css\pagination.css" />
+    <Content Include="flash\Flvplayer.swf" />
+    <Content Include="HtmlPage1.html" />
     <Content Include="images\4040902.jpg" />
     <Content Include="images\4040902_03.png" />
     <Content Include="images\404btn.png" />
